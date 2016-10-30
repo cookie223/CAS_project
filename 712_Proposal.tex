@@ -1,0 +1,66 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{color}
+\usepackage{color,soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{physics}
+\usepackage{enumerate}
+\usepackage{wrapfig}
+\usepackage{placeins}
+\usepackage{multicol}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\fxinput{\vspace{.10in}\textbf{Input: }}
+\newcommand\fxoutput{\vspace{.10in}\textbf{Output: }}
+\newcommand\fxobjective{\vspace{.10in}\textbf{Objective: }}
+\newcommand\fxproblem{\vspace{.10in}\textbf{Optimization Problem: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ }}
+%\chead{\textbf{Project Proposal}}
+\rhead{02-712, \today}
+
+
+\lstset
+{
+    language=Python,
+    numbers=left, 
+    firstnumber=1,
+    numberfirstline=true
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{Maroon},
+    numberstyle=\tiny\color{OliveGreen},
+    commentstyle=\color{BurntOrange},
+    identifierstyle=\color{Black},
+    stringstyle=\color{RoyalBlue},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Christine Baek, Qi Chu, Yanyu Liang}  % your name
+%Section B==============Put your answers to the questions below here=======================
+
+\question{Introduction}
+
+Project is about the evolution and relationship of various Cas (CRISPR-associated) proteins. CRISPR is the adaptive immune system of bacteria and archaea. CRISPR system works by base-pair recognition of foreign genetic material and subsequent nuclease activity on the non-self genome. This has been adopted for the purpose of genetic engineering, and its cleavage based on base-pairing (as opposed to protein-DNA recognition of ZNF or TALENs) provide improved accuracy and reduced costs (no protein engineering involved). CRISPR is as diverse as the species that utilize them, but ultimately have the same function. While Cas9 (isolated from \textit{Streptococcus pyogenes}) currently the protein of choice for such applications due to smallest number of involved components, it would be beneficial to study the other Cas proteins as well since Cas9 is limited in terms of PAM (Protospacer Adjacent Motif), of \texttt{-NGG} or to be used in conjunction with Cas9. 
+
+\question{Special Aims}
+
+
+\question{Work Plan}
+
+\end{document}
