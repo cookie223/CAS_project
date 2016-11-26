@@ -117,17 +117,8 @@
 
 
 \begin{document}
-%
-% paper title
-% Titles are generally capitalized except for words such as a, an, and, as,
-% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
-% not capitalized unless they are the first or last word of the title.
-% Linebreaks \\ can be used within to get better formatting as desired.
-% Do not put math or special symbols in the title.
+
 \title{Identification of Conserved Regions\\ in CRISPR protein family}
-
-
-
 
 % make the title area
 \maketitle
@@ -281,13 +272,14 @@ talk about the data itself here, and why we used 3 different methods.
 
 \subsection{Sequence Alignment using Dynamic Programming}
 \subsubsection{Model \& Algorithm Overview}
-talk about overview of what the method does (method itself, not in detail of how you used it)
+
+Semiglobal ailgnment using Needleman-Wunsch~\cite{needlemanwunsch} and Local Alignment using Smith-Waterman Algorithm~\cite{smithwaterman}
 
 \subsubsection{Pros and Cons}
-of using the method - what is it capable of, what are the limitations ?
+running time is polynomial in terms of number of sequences being aligned. actual global max achieved, for the sequences being aligned. 
 
 \subsubsection{Protocol}
-implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
+BLOSUM62 used - general good starting point, for varied sequence similarities. 
 
 \subsubsection{Analysis}
 Discuss METHOD for analysis, not the actual result/analysis itself. 
@@ -374,7 +366,13 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
 
 \bibitem{cas:makarova}
-K. S. ~Makarova, Y.I.~Wolf,  O.S. Alkhnbashi, E.V. ~Koonin et al., \emph{An updated evolutionary classification of CRISPR-Cas systems}  \hskip 1em plus 0.5em minus 0.4em\relax http://dx.doi.org/10.1038/nrmicro3569
+K. S. ~Makarova, et al., \emph{An updated evolutionary classification of CRISPR-Cas systems}  \hskip 1em plus 0.5em minus 0.4em\relax http://dx.doi.org/10.1038/nrmicro3569, 28 September 2015
+
+\bibitem{needlemanwunsch}
+Saul B. Needleman, Christian D. Wunsch, \emph{A general method applicable to the search for similarities in the amino acid sequence of two proteins} \hskip 1em plus 0.5em minus 0.4em\relax http://www.sciencedirect.com/science/article/pii/0022283670900574, 28 March 1970
+
+\bibitem{smithwaterman}
+Smith, Temple F. \& Waterman, Michael S., \emph{Identification of Common Molecular Subsequences} \hskip 1em plus 0.5em minus 0.4em\relax Journal of Molecular Biology. 147: 195-197. doi:10.1016/0022-2836(81)90087-5. PMID 7265238., 1981
 
 \end{thebibliography}
 

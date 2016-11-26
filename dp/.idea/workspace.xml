@@ -130,7 +130,7 @@
       <file leaf-file-name="Alignment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Alignment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-206">
+            <state relative-caret-position="-161">
               <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
               <folding />
             </state>
@@ -752,12 +752,12 @@
       <workItem from="1480111324635" duration="277000" />
       <workItem from="1480111764467" duration="17698000" />
       <workItem from="1480183063797" duration="595000" />
-      <workItem from="1480186789052" duration="393000" />
+      <workItem from="1480186789052" duration="502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18963000" />
+    <option name="totallyTimeSpent" value="19072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1066,7 +1066,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Alignment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-206">
+        <state relative-caret-position="-161">
           <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
           <folding />
         </state>
