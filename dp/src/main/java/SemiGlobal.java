@@ -39,7 +39,7 @@ public class SemiGlobal {
         readRef();
         readOthers();
         others.forEach(seq -> align(ref, seq));
-        alignments.forEach(aln -> System.out.println(aln.score + "  ###  " + aln.other));
+        alignments.forEach(aln -> System.out.println(aln));
     }
 
     /**

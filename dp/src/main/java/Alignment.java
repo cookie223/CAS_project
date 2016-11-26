@@ -29,6 +29,18 @@ public class Alignment {
         readTraceBack();
     }
 
+    public String toString() {
+        return String.format("\nSequence Aligned : %s # with # %s \n" +
+                        "Alignment Score : %s \n" +
+                        "Reference Subsequence : %s \n" +
+                        "Aligned Subsequence : %s \n" +
+                        "traceBack started from : [%d][%d] \n" +
+                        "traceBack ended at : [%d][%d] \n\n" +
+                        "****************************************" +
+                        "****************************************"
+                , reference.name, other.name, score, referenceAligned, otherAligned, endRow, endCol, startRow, startCol);
+    }
+
     /**
      * trace back to extract the aligned subsequence of the two sequences
      */

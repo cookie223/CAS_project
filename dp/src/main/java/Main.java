@@ -19,13 +19,12 @@ public class Main {
         String matrixDirectory = "src/main/resources/BLOSUM/BLOSUM62";
         ScoringMatrix scoringMatrix = new ScoringMatrix(matrixDirectory);
 
-        //SemiGlobal align = new SemiGlobal(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
-
+        SemiGlobal align = new SemiGlobal(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
 
 
         // test case - comment out for actual run
         String test = "src/main/resources/test.fa";
-        SemiGlobal align = new SemiGlobal(scoringMatrix, test, referenceSeq, horInit, verInit, horEnd, verEnd);
+        //SemiGlobal testSM = new SemiGlobal(scoringMatrix, test, referenceSeq, horInit, verInit, horEnd, verEnd);
 
 
 
