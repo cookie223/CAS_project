@@ -30,15 +30,17 @@ public class Alignment {
     }
 
     public String toString() {
+        Double avgScore = 1.0 * score/(referenceAligned.length());
         return String.format("\nSequence Aligned : %s # with # %s \n" +
                         "Alignment Score : %s \n" +
+                        "Average Score per position : %f \n" +
                         "Reference Subsequence : %s \n" +
                         "Aligned Subsequence : %s \n" +
                         "traceBack started from : [%d][%d] \n" +
                         "traceBack ended at : [%d][%d] \n\n" +
                         "****************************************" +
                         "****************************************"
-                , reference.name, other.name, score, referenceAligned, otherAligned, endRow, endCol, startRow, startCol);
+                , reference.name, other.name, score, avgScore, referenceAligned, otherAligned, endRow, endCol, startRow, startCol);
     }
 
     /**
