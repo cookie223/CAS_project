@@ -1,0 +1,1 @@
+hmmbuild globins4.hmm globins4.sto
