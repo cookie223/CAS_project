@@ -80,8 +80,10 @@ def update_pssm(seq_pool, pos, width, index_star, index_star_pre, dic, current_p
 	pre_in = seq_pool[index_star_pre][pos[index_star_pre][0] : pos[index_star_pre][0] + width]
 	now_out = seq_pool[index_star][pos[index_star][0] : pos[index_star][0] + width]
 	for i in range(width):
+		# print('in=' + str(sum(pssm_count[i])))
 		pssm_count[i][dic[0][pre_in[i]]] = pssm_count[i][dic[0][pre_in[i]]] + 1
 		pssm_count[i][dic[0][now_out[i]]] = pssm_count[i][dic[0][now_out[i]]] - 1
+		# print('out=' + str(sum(pssm_count[i])))
 	(pssm_score, pssm_prob) = count_to_prob(pssm_count, pseudo_count, dic, background_dist)
 	return (pssm_count, pssm_score, pssm_prob)
 
@@ -94,7 +96,10 @@ def scroing_seq(seq, current_pssm, dic):
 		score = 0
 		for j in range(len(substr)):
 			score = logadd(score, current_pssm[2][j][dic[0][substr[j]]])
+			# print(substr + '-' + substr[j] + '++' + str(current_pssm[2][j][dic[0][substr[j]]]) + '  ' + str(score))
 		scores.append(score)
+
+		# print(str(score) + '--' + substr)
 	scores = np.exp(np.array(scores))
 	scores = scores / np.sum(scores)
 	return scores
@@ -106,7 +111,7 @@ def draw_from(index_star, k):
 	return temp
 
 def logadd(x, y):
-	return max(x, y) + math.log(math.exp( - abs(x - y)))
+	return max(x, y) + math.log1p(math.exp( - abs(x - y)))
 
 def read_fasta(filename):
 	seq_file = open(filename, 'r')
@@ -202,7 +207,7 @@ def compute_objective(seq_pool, pos, width, current_pssm, index_star, dic, pseud
 	if mode != 'full':
 		return (score_across_seq_star, 0)
 	pos[index_star][0] = np.argmax(score_across_seq_star)
-	pssm_count = copy.copy(current_pssm[0])
+	pssm_count = copy.deepcopy(current_pssm[0])
 	pre_in = seq_pool[index_star][pos[index_star][0] : pos[index_star][0] + width]
 	for i in range(width):
 		pssm_count[i][dic[0][pre_in[i]]] = pssm_count[i][dic[0][pre_in[i]]] + 1
@@ -211,7 +216,38 @@ def compute_objective(seq_pool, pos, width, current_pssm, index_star, dic, pseud
 	for i in pos:
 		substr = seq_pool[i[1]][i[0] : i[0] + width]
 		for j in range(len(substr)):
-			score += current_pssm[2][j][dic[0][substr[j]]]
-	return(score_across_seq_star, score)
+			score += pssm_score[j][dic[0][substr[j]]]
+	return(score_across_seq_star, score, pssm_count)
 
+def gen_true_pos(names, true_id, start):
+	true_pos = []
+	counter = 0
+	for i in names:
+		i = i.split(' ')
+		i = i[-1]
+		i = i.split('-')
+		i = int(i[true_id])
+		true_pos.append([i + start, counter])
+		counter += 1
+	return true_pos
+
+def scoring_seq_by_pssm(seq, width, bpssm_score, alphabet_dic):
+	score = []
+	for i in range(len(seq) - width):
+		subseq = seq[i : i + width]
+		nowscore = scoring_substr_by_pssm(subseq, bpssm_score, alphabet_dic)
+		score.append(nowscore)
+	return score
+
+def scoring_substr_by_pssm(substr, bpssm_score, dic):
+	score = 0
+	for j in range(len(substr)):
+		# print(score)
+		score += bpssm_score[j][dic[0][substr[j]]]
+	return score
+
+
+
+# def weighted_draw_from(index_star, k, current_pssm):
+	
 
