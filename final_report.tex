@@ -1,7 +1,5 @@
-
-
-
 \documentclass[journal,onecolumn]{IEEEtran}
+
 
 
 
@@ -153,6 +151,21 @@
 
 
 
+\usepackage{amsmath} % special symbols
+\usepackage{amssymb} % more special symbols
+\usepackage{epsfig} % needed for including figures
+\usepackage{lipsum} % generate placeholder text
+\usepackage[hyphens]{url} % line break URLs
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % custom color definition
+\usepackage[figure]{algorithm2e} % advanced written algorithm handling
+\usepackage{graphicx} % advanced graphic manipulation handling
+\usepackage{epstopdf} % converts vector graphics (eps) to pdf for embedding
+\usepackage{longtable} % allows tables to break across multiple pages
+\usepackage{makeidx} % create an index
+\usepackage{framed}
+\usepackage{placeins}
+\usepackage{cite}
+
 
 % *** SUBFIGURE PACKAGES ***
 %\ifCLASSOPTIONcompsoc
@@ -250,6 +263,10 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: } #1}}
+
+
+
 \begin{document}
 %
 % paper title
@@ -261,29 +278,22 @@
 \title{Identification of Conserved Regions\\ in CRISPR protein family}
 
 
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
-\author{\IEEEauthorblockN{Christine Baek}
-\IEEEauthorblockA{Computational Biology\\
-Carnegie Mellon University\\
-baek@cmu.edu}
-\and
-\IEEEauthorblockN{Qi Chu}
-\IEEEauthorblockA{Computational Biology\\
-Carnegie Mellon University\\
-qchu@andrew.cmu.edu}
-\and
-\IEEEauthorblockN{Yanyu Liang}
-\IEEEauthorblockA{Computational Biology\\
-Carnegie Mellon University\\
-yanyul@andrew.cmu.edu}}
-
-
 
 
 % make the title area
 \maketitle
+
+\begin{center}
+\begin{tabular}{ c c c }
+ Christine Baek$^1$ & Qi Chu$^1$ & Yanyu Liang$^1$ \\ 
+christib@andrew.cmu.edu & qchu@andrew.cmu.edu & yanyul@andrew.cmu.edu \\     
+\end{tabular}\\
+\smallskip
+\smallskip
+$^1$Computational Biology, Carnegie Mellon University
+\end{center}
+
+\bigskip
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
@@ -296,37 +306,23 @@ The abstract goes here.
 
 
 
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-\IEEEpeerreviewmaketitle
-
-
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill August 26, 2015
+\TODO{Christine : brief intro}
 
-\subsection{Subsection Heading Here}
+\subsection{CRISPR/Cas} 
+\TODO{Christine writes about CRISPR bg}
 Subsection text here.
 
+\subsection{Past Approaches}
+\TODO{Qi : summarize the HMMer approach?}
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\subsection{Approaches in This Paper}
+\TODO{everyone?}
+
+\subsection{Goal of Paper}
+\TODO{Yanyu : short discussion of our goal in this paper}
 
 
 % An example of a floating figure using the graphicx package.
@@ -428,6 +424,11 @@ Subsubsection text here.
 
 We used 3 differenr approaches .. blahblahblah. All used the same .fa sequence, etc. etc. 
 talk about the data itself here, and why we used 3 different methods.
+\TODO{Christine : fill in this section, and why protein sequence}
+
+\subsection{Data Retrieval}
+
+\TODO{Qi : talk about source of data}
 
 \subsection{Sequence Alignment using Dynamic Programming}
 \subsubsection{Model \& Algorithm Overview}
@@ -457,14 +458,14 @@ Discuss METHOD for analysis, not the actual result/analysis itself.
 
 
 \subsection{Domain-specific profile HMM}
-\subsubsection{Model \& Algorithm Overview}\\
+\subsubsection{Model \& Algorithm Overview}
 To find out whether a sequence of amino acid belongs some domain, we can build a model of the domain and try to match the sequence of the model. Profile Hidden Markov Model is one of the 
 models we can build to figure out whether a sequence contains the domain. The model of profile HMM is shown in Figure \ref{HMM}. 
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.7]{images/profileHMM}
-      \caption{Profile Hidden Markov Model}
+      \caption{Profile Hidden Markov Model\cite{hmmer}}
       \label{HMM}
 \end{figure}
 
@@ -489,34 +490,36 @@ models we can build to figure out whether a sequence contains the domain. The mo
 \item A set of \textit{Cas9} or \textit{Cas5} sequences and their domain markers are fetched from EMBL-EBI (http://www.ebi.ac.uk).
 \item Sequences of each of the shared domains are subtracted from the full \textit{Cas9} or \textit{Cas5} sequences.
 \item For each domain, multiple sequences from different \textit{Cas9} or \textit{Cas5} are aligned by Clustal Omega (http://www.clustal.org/).
-\item  A profile HMM is built on the multiple sequence alignment for each domain by Hmmer (http://hmmer.org/).
+\item  A profile HMM is built on the multiple sequence alignment for each domain by Hmmer (http://hmmer.org/)\cite{hmmer}.
 \item Search for matches using the profile HMM in the sequences of all previously downloaded \textit{Cas} family proteins.
 \end{enumerate}
 
-\subsubsection{Analysis}\\
-For method testing, a set of globin sequences given in Hmmer is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
+\subsubsection{Analysis}
+For method testing, a set of globin sequences given in Hmmer\cite{hmmer} is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
 For output analysis, HMM is able to give the probability of given sequence emitted from the underlying domain profile HMM.
+
+
+
 
 
 \section{Results}
 
+Individual results for each 
+
+\TODO{put in appropriate figures, and any analysis for each}
+
+
+\subsection{Sequence Alignment using Dynamic Programming}
+
+\subsection{Gibbs Sampling}
+
+\subsection{HMM}
+
+
 \section{Conclusion}
-The conclusion goes here.
 
 
-
-
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgment
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
-
-
-
+\TODO{we need to do this one together}
 
 
 % trigger a \newpage just before the given reference
@@ -541,6 +544,9 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
+
+\TODO{please include any other resources or papers you referenced}
+
 \begin{thebibliography}{1}
 
 \bibitem{IEEEhowto:kopka}
