@@ -1,0 +1,3 @@
+two improvements:
+1. overcome biased samples
+2. the change bias to cas X at the beginning and bias to cas 9 afterwards
