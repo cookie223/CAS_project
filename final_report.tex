@@ -1,158 +1,19 @@
-
-
-
 \documentclass[journal,onecolumn]{IEEEtran}
 
-
-
-
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/pkg/ifpdf
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
-
-
-
-
-
-
-% *** CITATION PACKAGES ***
-%
-%\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
-
-
-
-
-
-% *** GRAPHICS RELATED PACKAGES ***
-%
-\ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation
-% can be obtained at: 
-% http://www.ctan.org/pkg/graphicx
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found at:
-% http://www.ctan.org/pkg/epslatex
-%
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
-
-
-
-
-
-% *** MATH PACKAGES ***
-%
-%\usepackage{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics.
-%
-% Note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/amsmath
-
-
-
-
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/pkg/algorithms
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/pkg/algorithmicx
-
-
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
+\usepackage{amsmath} % special symbols
+\usepackage{amssymb} % more special symbols
+\usepackage{epsfig} % needed for including figures
+\usepackage{lipsum} % generate placeholder text
+\usepackage[hyphens]{url} % line break URLs
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % custom color definition
+\usepackage[figure]{algorithm2e} % advanced written algorithm handling
+\usepackage{graphicx} % advanced graphic manipulation handling
+\usepackage{epstopdf} % converts vector graphics (eps) to pdf for embedding
+\usepackage{longtable} % allows tables to break across multiple pages
+\usepackage{makeidx} % create an index
+\usepackage{framed}
+\usepackage{placeins}
+\usepackage{cite}
 
 
 % *** SUBFIGURE PACKAGES ***
@@ -251,6 +112,10 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: } #1}}
+
+
+
 \begin{document}
 %
 % paper title
@@ -262,29 +127,22 @@
 \title{Identification of Conserved Regions\\ in CRISPR protein family}
 
 
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
-\author{\IEEEauthorblockN{Christine Baek}
-\IEEEauthorblockA{Computational Biology\\
-Carnegie Mellon University\\
-baek@cmu.edu}
-\and
-\IEEEauthorblockN{Qi Chu}
-\IEEEauthorblockA{Computational Biology\\
-Carnegie Mellon University\\
-qchu@andrew.cmu.edu}
-\and
-\IEEEauthorblockN{Yanyu Liang}
-\IEEEauthorblockA{Computational Biology\\
-Carnegie Mellon University\\
-yanyul@andrew.cmu.edu}}
-
-
 
 
 % make the title area
 \maketitle
+
+\begin{center}
+\begin{tabular}{ c c c }
+ Christine Baek$^1$ & Qi Chu$^1$ & Yanyu Liang$^1$ \\ 
+christib@andrew.cmu.edu & qchu@andrew.cmu.edu & yanyul@andrew.cmu.edu \\     
+\end{tabular}\\
+\smallskip
+\smallskip
+$^1$Computational Biology, Carnegie Mellon University
+\end{center}
+
+\bigskip
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
@@ -297,37 +155,23 @@ The abstract goes here.
 
 
 
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-\IEEEpeerreviewmaketitle
-
-
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill August 26, 2015
+\TODO{Christine : brief intro}
 
-\subsection{Subsection Heading Here}
+\subsection{CRISPR/Cas} 
+\TODO{Christine writes about CRISPR bg}
 Subsection text here.
 
+\subsection{Past Approaches}
+\TODO{Qi : summarize the HMMer approach?}
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\subsection{Approaches in This Paper}
+\TODO{everyone?}
+
+\subsection{Goal of Paper}
+\TODO{Yanyu : short discussion of our goal in this paper}
 
 
 % An example of a floating figure using the graphicx package.
@@ -429,6 +273,11 @@ Subsubsection text here.
 
 We used 3 differenr approaches .. blahblahblah. All used the same .fa sequence, etc. etc. 
 talk about the data itself here, and why we used 3 different methods.
+\TODO{Christine : fill in this section, and why protein sequence}
+
+\subsection{Data Retrieval}
+
+\TODO{Qi : talk about source of data}
 
 \subsection{Sequence Alignment using Dynamic Programming}
 \subsubsection{Model \& Algorithm Overview}
@@ -470,25 +319,27 @@ implementation details - justifications for decisions you made when you ran the 
 \subsubsection{Analysis}
 Discuss METHOD for analysis, not the actual result/analysis itself. 
 
+
+
+
 \section{Results}
 
+Individual results for each 
+
+\TODO{put in appropriate figures, and any analysis for each}
+
+
+\subsection{Sequence Alignment using Dynamic Programming}
+
+\subsection{Gibbs Sampling}
+
+\subsection{HMM}
+
+
 \section{Conclusion}
-The conclusion goes here.
 
 
-
-
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgment
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
-
-
-
+\TODO{we need to do this one together}
 
 
 % trigger a \newpage just before the given reference
@@ -513,6 +364,9 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
+
+\TODO{please include any other resources or papers you referenced}
+
 \begin{thebibliography}{1}
 
 \bibitem{IEEEhowto:kopka}
