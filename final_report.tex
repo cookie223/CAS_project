@@ -5,7 +5,6 @@
 
 
 
-
 % *** MISC UTILITY PACKAGES ***
 %
 %\usepackage{ifpdf}
@@ -55,7 +54,7 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+\usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
@@ -457,18 +456,47 @@ implementation details - justifications for decisions you made when you ran the 
 Discuss METHOD for analysis, not the actual result/analysis itself. 
 
 
-\subsection{HMM}
-\subsubsection{Model \& Algorithm Overview}
-talk about overview of what the method does (method itself, not in detail of how you used it)
+\subsection{Domain-specific profile HMM}
+\subsubsection{Model \& Algorithm Overview}\\
+To find out whether a sequence of amino acid belongs some domain, we can build a model of the domain and try to match the sequence of the model. Profile Hidden Markov Model is one of the 
+models we can build to figure out whether a sequence contains the domain. The model of profile HMM is shown in Figure \ref{HMM}. 
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.7]{images/profileHMM}
+      \caption{Profile Hidden Markov Model}
+      \label{HMM}
+\end{figure}
+
 
 \subsubsection{Pros and Cons}
-of using the method - what is it capable of, what are the limitations ?
+\begin{itemize}
+\item Pros
+\begin{enumerate}
+\item We can leverage the abundant prior knowledge of Cas9 domain markers by building profile HMM using the alignment of the domains rather than the full sequence.
+\item Compared with pair-wise sequence alignment, HMM can find more cases of distantly related sequences.
+\item As shown in the figure, HMM can model insertions and deletions.
+\end{enumerate}
+\item Cons
+\begin{enumerate}
+\item To leverage the prior knowledge of domain markers, those markers need to be fetched separately from other data source rather than learned by the algorithm.
+\item The number of parameters is very large and they need to be optimized.
+\end{enumerate}
+\end{itemize}
 
 \subsubsection{Protocol}
-implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
+\begin{enumerate}
+\item A set of \textit{Cas9} or \textit{Cas5} sequences and their domain markers are fetched from EMBL-EBI (http://www.ebi.ac.uk).
+\item Sequences of each of the shared domains are subtracted from the full \textit{Cas9} or \textit{Cas5} sequences.
+\item For each domain, multiple sequences from different \textit{Cas9} or \textit{Cas5} are aligned by Clustal Omega (http://www.clustal.org/).
+\item  A profile HMM is built on the multiple sequence alignment for each domain by Hmmer (http://hmmer.org/).
+\item Search for matches using the profile HMM in the sequences of all previously downloaded \textit{Cas} family proteins.
+\end{enumerate}
 
-\subsubsection{Analysis}
-Discuss METHOD for analysis, not the actual result/analysis itself. 
+\subsubsection{Analysis}\\
+For method testing, a set of globin sequences given in Hmmer is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
+For output analysis, HMM is able to give the probability of given sequence emitted from the underlying domain profile HMM.
+
 
 \section{Results}
 
@@ -521,6 +549,9 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
 
 \bibitem{cas:makarova}
 K. S. ~Makarova, Y.I.~Wolf,  O.S. Alkhnbashi, E.V. ~Koonin et al., \emph{An updated evolutionary classification of CRISPR-Cas systems}  \hskip 1em plus 0.5em minus 0.4em\relax http://dx.doi.org/10.1038/nrmicro3569
+
+\bibitem{hmmer}
+HMMER 3.1b2 (February 2015); http://hmmer.org/
 
 \end{thebibliography}
 
