@@ -11,6 +11,7 @@ def readCSV(filename, destination) :
     filereader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in filereader :
       destination.append(row)
+  print(destination[0])
 
 def write(first, second) :
   with open('merged.csv', 'w') as csvfile:

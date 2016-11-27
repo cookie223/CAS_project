@@ -15,6 +15,7 @@ public class SemiGlobalAlign extends Align {
     }
 
     public void initMatrix(int refLength, int otherLength) {
+
         cells = new Cell[refLength][otherLength];
         for (int i = 0; i < refLength; i++) {
             for (int j = 0; j < otherLength ; j++) {
