@@ -1,6 +1,8 @@
 import csv
 
-# merge 2 .csv files into single
+# created by Christine Baek
+# November 26, 2016
+# merge 2 .csv files into single .csv in criss-cross format
 
 semiglo = []
 local = []
