@@ -22,7 +22,7 @@ public class Main {
         String matrixDirectory = "src/main/resources/BLOSUM/BLOSUM62";
         ScoringMatrix scoringMatrix = new ScoringMatrix(matrixDirectory);
 
-        String semiAlignFileName = "Cas_SemiGlobal_Alignment";
+        String semiAlignFileName = "Cas_SemiGlobal_Alignmenttest";
         SemiGlobalAlign align = new SemiGlobalAlign(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
         Sequence refSeq = align.getRefSeq();
         List<Alignment> semiAlign = align.getAlignments();
@@ -33,7 +33,7 @@ public class Main {
 //        List<Alignment> twotwo = two.getAlignments();
 //        new AlignmentToCSV(refSeq, "SECOND", twotwo);
 
-//        String localAlignFileName = "Cas_Local_Alignment";
+//        String localAlignFileName = "Cas_Local_Alignmenttest";
 //        LocalAlign local = new LocalAlign(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
 //        Sequence refSequ = local.getRefSeq();
 //        List<Alignment> localAln = local.getAlignments();

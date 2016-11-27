@@ -108,6 +108,7 @@ public abstract class Align {
     }
 
     protected void align(Sequence reference, Sequence other) {
+        System.out.println(this.getLocal());
         int refLength = reference.size + 1;
         int otherLength = other.size + 1;
         initMatrix(refLength, otherLength);
@@ -115,7 +116,7 @@ public abstract class Align {
             for (int j = 1; j < otherLength; j++) {
                 char verLetter = reference.sequence.charAt(i-1);
                 char horLetter = other.sequence.charAt(j-1);
-                getPreviousCell(i, j, verLetter, horLetter);
+                getPreviousCell(i, j, verLetter, horLetter, getLocal());
             }
         }
         Cell tbPoint = findTraceBack(refLength, otherLength);
@@ -124,20 +125,63 @@ public abstract class Align {
     }
 
     /**
-     * initialize matrix, according to type of alignment
-     * @param refLength reference sequence length
-     * @param otherLength other sequence length
-     */
-    public abstract void initMatrix(int refLength, int otherLength);
-
-    /**
      * update current cell based on DP
      * @param i row
      * @param j col
      * @param verLetter residue of vertical sequence
      * @param horLetter residue of horizontal sequence
      */
-    public abstract void getPreviousCell(int i, int j, char verLetter, char horLetter);
+    public void getPreviousCell(int i, int j, char verLetter, char horLetter, Boolean local) {
+        int verGap = verGapOpen ? gapPenalty : affineGapPenalty;
+        int horGap = horGapOpen ? gapPenalty : affineGapPenalty;
+        int verticalGapScore = cells[i - 1][j].score + verGap;
+        int horizontalGapScore = cells[i][j - 1].score + horGap;
+
+        // this section for diagonal
+        int verticalResidueIndex = matrix.residues.indexOf(verLetter);
+        int horizontalResidueIndex = matrix.residues.indexOf(horLetter);
+        int matchScore = matrix.matrix[verticalResidueIndex][horizontalResidueIndex];
+        int diagonalScore = cells[i - 1][j - 1].score + matchScore;
+
+        if (horizontalGapScore < 0 && verticalGapScore < 0 && diagonalScore < 0 && local) {
+            cells[i][j].score = 0;
+            horGapOpen = false;
+            verGapOpen = false;
+        } else if (horizontalGapScore > verticalGapScore && horizontalGapScore > diagonalScore) {
+            cells[i][j].prev = cells[i][j-1];
+            cells[i][j].score = horizontalGapScore;
+            horGapOpen = true;
+            verGapOpen = false;
+        } else if (verticalGapScore > diagonalScore && verticalGapScore > horizontalGapScore) {
+            cells[i][j].prev = cells[i-1][j];
+            cells[i][j].score = verticalGapScore;
+            verGapOpen = true;
+            horGapOpen = false;
+        } else { //diagonalScore is biggest, or there is tie
+            cells[i][j].prev = cells[i-1][j-1];
+            cells[i][j].score = diagonalScore;
+            horGapOpen = false;
+            verGapOpen = false;
+        }
+
+    }
+
+
+    /**
+     * initialize matrix, according to type of alignment
+     * @param refLength reference sequence length
+     * @param otherLength other sequence length
+     */
+    public abstract void initMatrix(int refLength, int otherLength);
+
+//    /**
+//     * update current cell based on DP
+//     * @param i row
+//     * @param j col
+//     * @param verLetter residue of vertical sequence
+//     * @param horLetter residue of horizontal sequence
+//     */
+//    public abstract void getPreviousCell(int i, int j, char verLetter, char horLetter);
 
     /**
      * find the starting point of traceback
@@ -147,4 +191,9 @@ public abstract class Align {
      */
     public abstract Cell findTraceBack(int refLength, int otherLength);
 
+    /**
+     *
+     * @return whether this is a local alignment
+     */
+    public abstract Boolean getLocal();
 }

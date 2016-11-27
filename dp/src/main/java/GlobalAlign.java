@@ -5,12 +5,11 @@ package main.java;
  * currently ignores any ties, and prefer diagonal matching
  * Created by christinebaek on 11/25/16.
  */
-public class SemiGlobalAlign extends Align {
+public class GlobalAlign extends Align {
 
     protected final int endGapPenalty = -3;
-    Boolean local = false;
 
-    public SemiGlobalAlign(ScoringMatrix matrix, String othersPath, String referencePath, Boolean horInit, Boolean verInit, Boolean horEnd, Boolean verEnd) {
+    public GlobalAlign(ScoringMatrix matrix, String othersPath, String referencePath, Boolean horInit, Boolean verInit, Boolean horEnd, Boolean verEnd) {
         super(matrix, othersPath, referencePath, horInit, verInit, horEnd, verEnd);
     }
 
@@ -20,16 +19,17 @@ public class SemiGlobalAlign extends Align {
 
         cells = new Cell[refLength][otherLength];
         for (int i = 0; i < refLength; i++) {
-            for (int j = 0; j < otherLength ; j++) {
-                cells[i][j] = new Cell(i, j);
-                if (cells[i][j] != null) continue;
-                if (horInit) {
-                    cells[i][0].score = endGapPenalty * i;
-                    cells[0][j].score = 0;
-                } else if (verInit) {
-                    cells[i][0].score = 0;
-                    cells[0][j].score = endGapPenalty * i;
-                }
+            cells[i][0] = new Cell(i, 0);
+            cells[i][0].score = endGapPenalty * i;
+        }
+        for (int i = 0; i < otherLength; i++) {
+            cells[0][i] = new Cell(0, i);
+            cells[0][i].score = endGapPenalty * i;
+        }
+
+        for (int i = 1; i < refLength; i++) {
+            for (int j = 1; j < otherLength; j++) {
+                cells[i][j] = new Cell(i,j);
             }
         }
     }
@@ -80,26 +80,7 @@ public class SemiGlobalAlign extends Align {
      */
     public Cell findTraceBack(int refLength, int otherLength) {
         Cell tbPoint = cells[refLength-1][otherLength-1];
-        int bestScore = tbPoint.score;
-        if (horEnd) {
-            // find maximum on the last row
-            for (int j = 0; j < otherLength; j++) {
-                int curScore = cells[refLength-1][j].score;
-                if (curScore > bestScore) {
-                    tbPoint = cells[refLength-1][j];
-                    bestScore = curScore;
-                }
-            }
-        } else if (verEnd) {
-            // find maximum on the last col
-            for (int i = 0; i < refLength; i++) {
-                int curScore = cells[i][otherLength-1].score;
-                if (curScore > bestScore) {
-                    tbPoint = cells[i][otherLength-1];
-                    bestScore = curScore;
-                }
-            }
-        }
+
         return tbPoint;
     }
 
