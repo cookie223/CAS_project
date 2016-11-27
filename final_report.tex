@@ -127,7 +127,7 @@
 
 \begin{document}
 
-\title{Identification of Conserved Regions\\ in CRISPR protein family}
+\title{\textbf{Identification of Conserved Regions\\ in CRISPR Protein Family}\\ \text{02-712 Final Project}}
 
 % make the title area
 \maketitle
@@ -139,7 +139,7 @@ christib@andrew.cmu.edu & qchu@andrew.cmu.edu & yanyul@andrew.cmu.edu \\
 \end{tabular}\\
 \smallskip
 \smallskip
-Computational Biology, Carnegie Mellon University
+Department of Computational Biology, Carnegie Mellon University
 \end{center}
 
 \bigskip
@@ -289,17 +289,17 @@ Semiglobal ailgnment using Needleman-Wunsch\cite{needlemanwunsch} and Local Alig
 
 code available at \texttt{https://github.com/cookie223/CAS\_project/tree/master/dp}
 
-\medskip
+
 \subsubsection{Model \& Algorithm Overview}
 
 Semiglobal alignment and local alignment were performed on various \textit{Cas} sequences. Because certain families of \textit{Cas} proteins are composed of multiple genes, it is impossible to do a global alignment, or multiple sequence alignment with all \textit{Cas} sequences. Instead, \textit{s. pyogenes Cas9} was used as a reference sequence, to which all other \textit{Cas} sequence was aligned to in pairwise sequence alignment. 
 
-\medskip
+
 \subsubsection{Pros and Cons}
 
 Because alignment were done against \textit{s. pyogenes Cas9} rather than a progressive alignment, for \textit{Cas} sequences highly divergent from \textit{s. pyogenes Cas9} may be aligned to an inaccurate site. Each alignment is guaranteed to return the global maximum or the most optimal alignment with given parameters, which may or may not be the actual corresponding motif. Also, this method assumes site independence, and does not discriminate conserved regions (which motifs would likely be part of) as opposed to fast-evolving regions.
 
-\medskip
+
 \subsubsection{Protocol} 
 Following parameters were used for sequence alignment :
 \begin{itemize}
@@ -311,7 +311,7 @@ Following parameters were used for sequence alignment :
 
 Gap opening / affine gap penalty was slightly lowered to relax requirement for opening gap, as this experiment is for identifying local regions rather than strict sequence search.
 
-\medskip
+
 \subsubsection{Analysis}
 
 After each \textit{Cas} sequence was aligned to \textit{s. pyogenes Cas9}, it was then analyzed for the following values :
@@ -325,27 +325,26 @@ After each \textit{Cas} sequence was aligned to \textit{s. pyogenes Cas9}, it wa
 
 This was done for both semi-global and local alignment outputs. 
 
-\bigskip
+
 \subsection{Gibbs Sampling}
-\medskip
+
 \subsubsection{Model \& Algorithm Overview}
 talk about overview of what the method does (method itself, not in detail of how you used it)
 
-\medskip
+
 \subsubsection{Pros and Cons}
 of using the method - what is it capable of, what are the limitations ?
 
-\medskip
+
 \subsubsection{Protocol}
 implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
 
-\medskip
+
 \subsubsection{Analysis}
 Discuss METHOD for analysis, not the actual result/analysis itself. 
 
-\bigskip
 \subsection{Domain-specific profile HMM}
-\medskip
+
 \subsubsection{Model \& Algorithm Overview}
 To find out whether a sequence of amino acid belongs some domain, we can build a model of the domain and try to match the sequence of the model. Profile Hidden Markov Model is one of the 
 models we can build to figure out whether a sequence contains the domain. The model of profile HMM is shown in Figure \ref{HMM}. 
@@ -357,7 +356,7 @@ models we can build to figure out whether a sequence contains the domain. The mo
       \label{HMM}
 \end{figure}
 
-\medskip
+
 \subsubsection{Pros and Cons}
 \begin{itemize}
 \item Pros
@@ -373,7 +372,7 @@ models we can build to figure out whether a sequence contains the domain. The mo
 \end{enumerate}
 \end{itemize}
 
-\medskip
+
 \subsubsection{Protocol}
 \begin{enumerate}[a.]
 \item A set of \textit{Cas9} or \textit{Cas5} sequences and their domain markers are fetched from EMBL-EBI (http://www.ebi.ac.uk).
@@ -383,7 +382,7 @@ models we can build to figure out whether a sequence contains the domain. The mo
 \item Search for matches using the profile HMM in the sequences of all previously downloaded \textit{Cas} family proteins.
 \end{enumerate}
 
-\medskip
+
 \subsubsection{Analysis}
 For method testing, a set of globin sequences given in Hmmer\cite{hmmer} is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
 For output analysis, HMM is able to give the probability of given sequence emitted from the underlying domain profile HMM.
