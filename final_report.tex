@@ -10,7 +10,7 @@
 \usepackage{color}
 \usepackage{color,soul}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % custom color definition
-\usepackage[figure]{algorithm2e} % advanced written algorithm handling
+% \usepackage[figure]{algorithm2e} % advanced written algorithm handling
 \usepackage{graphicx} % advanced graphic manipulation handling
 \usepackage{epstopdf} % converts vector graphics (eps) to pdf for embedding
 \usepackage{longtable} % allows tables to break across multiple pages
@@ -41,6 +41,17 @@
 
 
 \newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: } #1}}
+
+
+% Yanyu's
+\usepackage{cleveref}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\algnewcommand\algorithmicinput{\textbf{Input:}}
+\algnewcommand\INPUT{\item[\algorithmicinput]}
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\OUTPUT{\item[\algorithmicoutput]}
+\newcommand{\algorithmicbreak}{\textbf{break}}
 
 
 
@@ -108,17 +119,20 @@ Functionally related regions can be clustered by evidences in experimental data.
       \label{buildingBlocks}
 \end{figure}
 
-\subsection{Approaches in This Paper}
-\TODO{everyone?}
-
-
-
 \subsection{Goal of Paper}
 
+In this paper, we would like to answer the question that whether or not the proteins in Cas family share some sequence level similarity. And more specifically, as Cas9 is a multi-domain protein with multiple functions and each function can be achieved by other single-function protein in Cas family, we would like to explore if we can map such functional domain similarity on the basis of primary sequence similarity between Cas9 and other cas proteins. Informally, we tend to solve the following problem:
+\begin{itemize}
+	\item \textbf{Input}: Two sets of sequences $C_1 = \{p_1, ..., p_m\}$ and $C_2 = \{q_1, ..., q_n\}$
+	\item \textbf{Output}: A set of regions $R = \{r_1, ..., r_k\}$ such that $r_i$ \textit{occurs} and is \textit{representative} in both $C_1$ and $C_2$ 
+\end{itemize}
+Here \textit{occurs} and \textit{representative} can be explained in different ways under different strategies. In the following section we will discuss the two strategies we proposed to solve this problem.
 
-\TODO{Yanyu : short discussion of our goal in this paper}
+\subsection{Approaches in This Paper}
 
+In this paper, we propose the following two strategies: i) alignment; ii) motif finding. First of all, our problem is naturally a multiple sequence alignment problem. Notice that other Cas proteins is like a substring of Cas9, then to recognize such local similarity, both semi-global alignment and local alignment is suitable in this case. And here \textit{occurs} and \textit{representative} mean that $r_i$ is optimal in alignment.  
 
+Besides profile-based local alignment or semi-global alignment techniques, an alternative approach is to make use of motif information. Motif finding problem is defined as to find representative pattern in a collection of sequences. Following this idea, we can first find motif in $C_1$ and perform pattern recognition in $C_2$. The motif found in $C_1$ carries the \textit{representative} signature of $C_1$ and the recognition in $C_2$ tests whether it meets the requirement to be \textit{occur} in both $C_1$ and $C_2$. Furthermore, for motif analysis, we propose two widely used methods: i) Gibbs sampling; ii) Hidden Markov Models. 
 
 \section{Methods}
 
@@ -175,23 +189,69 @@ After each \textit{Cas} sequence was aligned to \textit{s. pyogenes Cas9}, it wa
 
 This was done for both semi-global and local alignment outputs. 
 
-
 \subsection{Gibbs Sampling}
 
 \subsubsection{Model \& Algorithm Overview}
-talk about overview of what the method does (method itself, not in detail of how you used it)
 
+Gibbs sampling approach is based on position-specific scoring matrix \cite{stormo1982use}, or PSSM, is one of the ways to model a motif. Suppose we are working on sequence set with $\Sigma$ as alphabet and the length of the motif is $w$. Then PSSM is a $|\Sigma|$-by-$w$ matrix with entry:
+\begin{align*}
+  S_c(A) = \log \frac{\Pr(\text{$A$ is at $c$th column}|\text{motif})}{\Pr(\text{$A$ is at $c$th column}|\text{background})}
+\end{align*}
+, where $S_c(A), A \in \Sigma$ is the score of alphabet $A$ appearing at $c$th position in the motif and the score is a log odds ratio.
+
+Under PSSM setup, the motif is ungapped with a fixed length and each position is scored independently to each other. PSSM provides a way to parameterize motif and, furthermore, the motif finding problem can be cast as an optimization problem as follow:
+\begin{align}
+  \max_{S, o} \sum_{i = 1}^n \sum_{c = 1}^w S_c(q_i[o_i + c]) \label{eq:obj}
+\end{align}
+, where $q_i[x]$ is the $x$th character of $i$th sequence in the collection and $o_i$ indicates the starting site of the motif for $i$th sequence. With various size of the sequence set, this problem is NP-hard and \cite{lawrence1993detecting} has proposed a Gibbs sampling approach to solve it. 
+
+Note that with known $o$, solving for $S$ is reduced to a maximum likelihood estimation, which is trivial to solve, so the core of this problem is to find the optimal $o^{\star}$. Let $S^o$ denote the scoring matrix induced by $o$ and $f_{S}(o)$ denote the objective in \Cref{eq:obj} (with $S$ as scoring matrix), then we can encode the probability distribution of $o$ according to $f(o)$:
+\begin{align*}
+  \Pr(o) \propto e^{f_{S^o}(o)}
+\end{align*} 
+Gibbs sampler can be used to sample from this distribution with transition probability as follow:
+\begin{align}
+  & \log q(o_1, ..., o_i', ..., o_k|o_1, ..., o_i, ..., o_k) \nonumber \\
+  =& \log \frac{1}{k}\Pr(o_1, ..., o_i', ..., o_k|o_1, ..., o_i, ..., o_k) \label{eq:exact}\\
+  =& S^{(o_1, ..., o_i', ..., o_k)}(o_i')\sum_{j \neq i}^k S^{(o_1, ..., o_i', ..., o_k)}(o_j) + const \nonumber \\
+  \approx& S^{o_{-i}}(o_i')\sum_{j \neq i}^k S^{o_{-i}}(o_j) + const \nonumber \\
+  =& S^{o_{-i}}(o_i') + const \label{eq:approx}
+\end{align} 
+, where $S^{o_{-i}}$ is the scoring matrix derived from $o$ without $o_i$ and $S(o_i)$ is the score of $o_i$ based on $S$. With this setup, \cite{lawrence1993detecting} proposed \Cref{algo:gibbs}.
+\begin{algorithm}
+  \caption{Gibbs sampler for motif finding}
+  \label{algo:gibbs}
+  \begin{algorithmic}[1]
+    \INPUT{sequence set $q$, motif width $w$}
+    \OUTPUT{set of starting points $o$}
+    \State initialize $o$
+    \State $o^{\star} \leftarrow o$
+    \While{forever}
+      \State pick $i$ from $1, ..., |q|$ with uniform distribution
+      \State update $S \leftarrow S^{o_{-i}}$
+      \State compute transition probability $p(o_i') \leftarrow \exp\{S(o_i')\}$
+      \State update $o_i \sim \text{Multinomial}(p, 1)$
+      \State update $o^{\star}$ if there is any improvement
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}
 
 \subsubsection{Pros and Cons}
-of using the method - what is it capable of, what are the limitations ?
 
+Gibbs sampling approach is easy to implement and it converges to optimal solution as the running time goes to infinity. Besides, PSSM representation of a motif is easy to understand and visualize. While, the downside of this approach is that it cannot bear gap. If the sequence collection shares a gapped motif, PSSM based Gibbs sampler will fail to recognize it. Furthermore, the length of the motif and the number of steps are two hyper-parameters which should be specified by the user. In practice, it takes extra computing time to search for a suitable width and to stop early or later is instance specific, and has no general strategy to follow.
 
 \subsubsection{Protocol}
-implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
 
+Following steps were applied to the analysis:
+\begin{enumerate}
+	\item Implement a Gibbs sampler described in \Cref{algo:gibbs}
+	\item Train a set of motifs with various widths using Cas5 and Cas7
+	\item Score Cas9 sequences based on learned motifs
+\end{enumerate}
+The widths used started from 10 to up to 190 and the size of interval was 10. To retrieve not only the most representative motif but other sub-optimal ones, for every width we repeated the Gibbs sampling procedure five times and recorded the best output for every run. For every Markov chain, we ran 600 steps because it was sufficient to reach a suboptimal with 600 steps for all instances in analysis.
 
 \subsubsection{Analysis}
-Discuss METHOD for analysis, not the actual result/analysis itself. 
+To show our Gibbs sampler converge, we track the objective value along the Markov chain. And to show our motif finding based strategy works, we performed the proposed procedure on simulated sequences and globin sequences given in Hmmer\cite{hmmer} where two sets of sequences share similar primary sequence patterns and checked whether our approach could recover such similarity.
 
 \subsection{Domain-specific profile HMM}
 
@@ -372,21 +432,11 @@ Method as discussed in section~\ref{dpProtocol}. Visualization of data is availa
 
 \subsection{Gibbs Sampling}
 
-f
+\subsubsection{Proof of concept}
 
-i
+\subsubsection{Motif finding in Cas5 and Cas7}
 
-l
-
-l
-
-.
-
-.
-
-.
-
-
+\subsubsection{Pattern recognition in Cas9}
 
 
 \subsection{Domain-specific profile HMM}
@@ -428,7 +478,7 @@ We also tried the other direction. That is to use domain markers of \textit{Cas5
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.3]{images/cas5Domain}
-      \caption{One example result for searching for \textit{Cas9} in all \textit{Cas} family proteins}
+      \caption{One example result for searching for \textit{Cas5} in all \textit{Cas} family proteins}
       \label{Cas5}
 \end{figure} 
 
@@ -442,28 +492,6 @@ We also tried the other direction. That is to use domain markers of \textit{Cas5
 \TODO{we need to do this one together}
 
 
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
 
 \TODO{please include any other resources or papers you referenced}
 
@@ -490,8 +518,6 @@ Jinek M, Chylinski K, Fonfara I, Hauer M, Doudna JA, Charpentier E., \emph{A pro
 \bibitem{fengzhang}
 Ran, F Ann and Hsu, Patrick D and Wright, Jason and Agarwala, Vineeta and Scott, David A and Zhang, Feng, \emph{Genome engineering using the CRISPR-Cas9 system} \hskip 1em plus 0.5em minus 0.4em\relax Nat. Protocols(2013) http://dx.doi.org/10.1038/nprot.2013.143
 
-
-
 \bibitem{stanleyqi}
 Qi LS, Larson MH, Gilbert LA, Doudna JA, Weissman JS, Arkin AP, Lim WA., \emph{Repurposing CRISPR as an RNA-guided platform for sequence-specific control of gene expression} \hskip 1em plus 0.5em minus 0.4em\relax Cell. 2013 Feb 28;152(5):1173-83. doi: 10.1016/j.cell.2013.02.022.
 
@@ -505,430 +531,22 @@ Ran FA, Hsu PD, Lin C-Y, et al. \emph{Double nicking by RNA-guided CRISPR Cas9 f
 \bibitem{hmmer}
 HMMER 3.1b2 (February 2015); http://hmmer.org/
 
-\end{thebibliography}
-
-
-
-
-\end{document}
-
-% *** SUBFIGURE PACKAGES ***
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
-% for subfigure.sty, the latter of which is no longer maintained and is
-% incompatible with some LaTeX packages including fixltx2e. However,
-% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
-% which will override IEEEtran.cls' handling of captions and this will result
-% in non-IEEE style figure/table captions. To prevent this problem, be sure
-% and invoke subfig.sty's "caption=false" package option (available since
-% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
-% handling of captions.
-% Note that the Computer Society format requires a larger sans serif font
-% than the serif footnote size font used in traditional IEEE formatting
-% and thus the need to invoke different subfig.sty package options depending
-% on whether compsoc mode has been enabled.
-%
-% The latest version and documentation of subfig.sty can be obtained at:
-% http://www.ctan.org/pkg/subfig
-
-
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure.
-% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
-% corrections already built into the system in which case a warning will
-% be issued if an attempt is made to load fixltx2e.sty as it is no longer
-% needed.
-% The latest version and documentation can be found at:
-% http://www.ctan.org/pkg/fixltx2e
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/stfloats
-% Do not use the stfloats baselinefloat ability as the IEEE does not allow
-% \baselineskip to stretch. Authors submitting work to the IEEE should note
-% that the IEEE rarely uses double column equations and that authors should try
-% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
-% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
-% such ways.
-% Do not attempt to use stfloats with fixltx2e as they are incompatible.
-% Instead, use Morten Hogholm'a dblfloatfix which combines the features
-% of both fixltx2e and stfloats:
-%
-% \usepackage{dblfloatfix}
-% The latest version can be found at:
-% http://www.ctan.org/pkg/dblfloatfix
-
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/url
-% Basically, \url{my_url_here}.
-
-
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-
-<<<<<<< HEAD
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
-
-
-\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: } #1}}
-
-
-
-\begin{document}
-%
-% paper title
-% Titles are generally capitalized except for words such as a, an, and, as,
-% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
-% not capitalized unless they are the first or last word of the title.
-% Linebreaks \\ can be used within to get better formatting as desired.
-% Do not put math or special symbols in the title.
-\title{Identification of Conserved Regions\\ in CRISPR protein family}
-
-
-
-
-% make the title area
-\maketitle
-
-\begin{center}
-\begin{tabular}{ c c c }
- Christine Baek$^1$ & Qi Chu$^1$ & Yanyu Liang$^1$ \\ 
-christib@andrew.cmu.edu & qchu@andrew.cmu.edu & yanyul@andrew.cmu.edu \\     
-\end{tabular}\\
-\smallskip
-\smallskip
-$^1$Computational Biology, Carnegie Mellon University
-\end{center}
-
-\bigskip
-
-% As a general rule, do not put math, special symbols or citations
-% in the abstract
-\begin{abstract}
-The abstract goes here.
-\end{abstract}
-
-% no keywords
-
-
-
-
-
-\section{Introduction}
-
-\TODO{Christine : brief intro}
-
-\subsection{CRISPR/Cas} 
-\TODO{Christine writes about CRISPR bg}
-Subsection text here.
-
-\subsection{Past Approaches}
-Functionally related regions can be clustered by evidences in experimental data. As summarized in Figure. \ref{buildingBlocks}. Previous work has found conserved regions on the sequence level  using sequence alignment and structural information\cite{preWork} inside each sub-type of the \textit{Cas} system but not across the whole \textit{Cas} family.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[scale = 0.35]{images/buildingBlocks}
-      \caption{Conserved building blocks of \textit{Cas} family proteins \cite{buildingBlocks}}
-      \label{buildingBlocks}
-\end{figure}
-
-
-\subsection{Approaches in This Paper}
-\TODO{everyone?}
-
-\subsection{Goal of Paper}
-\TODO{Yanyu : short discussion of our goal in this paper}
-
-
-=======
->>>>>>> b17b96aa9a606a0fd1402306637d7c645220baf2
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure}
-
-% Note that the IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
-
-
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
-
-
-<<<<<<< HEAD
-\section{Methods}
-
-We used 3 differenr approaches .. blahblahblah. All used the same .fa sequence, etc. etc. 
-talk about the data itself here, and why we used 3 different methods.
-\TODO{Christine : fill in this section, and why protein sequence}
-
-\subsection{Data Retrieval}
-
-\TODO{Qi : talk about source of data}
-
-\subsection{Sequence Alignment using Dynamic Programming}
-\subsubsection{Model \& Algorithm Overview}
-talk about overview of what the method does (method itself, not in detail of how you used it)
-
-\subsubsection{Pros and Cons}
-of using the method - what is it capable of, what are the limitations ?
-
-\subsubsection{Protocol}
-implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
-
-\subsubsection{Analysis}
-Discuss METHOD for analysis, not the actual result/analysis itself. 
-
-\subsection{Gibbs Sampling}
-\subsubsection{Model \& Algorithm Overview}
-talk about overview of what the method does (method itself, not in detail of how you used it)
-
-\subsubsection{Pros and Cons}
-of using the method - what is it capable of, what are the limitations ?
-
-\subsubsection{Protocol}
-implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
-
-\subsubsection{Analysis}
-Discuss METHOD for analysis, not the actual result/analysis itself. 
-
-
-\subsection{Domain-specific profile HMM}
-\subsubsection{Model \& Algorithm Overview}
-To find out whether a sequence of amino acid belongs some domain, we can build a model of the domain and try to match the sequence of the model. Profile Hidden Markov Model is one of the 
-models we can build to figure out whether a sequence contains the domain. The model of profile HMM is shown in Figure \ref{HMM}. 
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[scale = 0.7]{images/profileHMM}
-      \caption{Profile Hidden Markov Model\cite{hmmer}}
-      \label{HMM}
-\end{figure}
-
-
-\subsubsection{Pros and Cons}
-\begin{itemize}
-\item Pros
-\begin{enumerate}
-\item We can leverage the abundant prior knowledge of Cas9 domain markers by building profile HMM using the alignment of the domains rather than the full sequence.
-\item Compared with pair-wise sequence alignment, HMM can find more cases of distantly related sequences.
-\item As shown in the figure, HMM can model insertions and deletions.
-\end{enumerate}
-\item Cons
-\begin{enumerate}
-\item To leverage the prior knowledge of domain markers, those markers need to be fetched separately from other data source rather than learned by the algorithm.
-\item The number of parameters is very large and they need to be optimized.
-\end{enumerate}
-\end{itemize}
-
-\subsubsection{Protocol}
-\begin{enumerate}
-\item A set of \textit{Cas9} or \textit{Cas5} sequences and their domain markers are fetched from EMBL-EBI (http://www.ebi.ac.uk).
-\item Sequences of each of the shared domains are subtracted from the full \textit{Cas9} or \textit{Cas5} sequences.
-\item For each domain, multiple sequences from different \textit{Cas9} or \textit{Cas5} are aligned by Clustal Omega (http://www.clustal.org/).
-\item  A profile HMM is built on the multiple sequence alignment for each domain by Hmmer (http://hmmer.org/)\cite{hmmer}.
-\item Search for matches using the profile HMM in the sequences of all previously downloaded \textit{Cas} family proteins.
-\end{enumerate}
-
-\subsubsection{Analysis}
-For method testing, a set of globin sequences given in Hmmer\cite{hmmer} is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
-For output analysis, HMM is able to give the probability of given sequence emitted from the underlying domain profile HMM.
-
-
-
-
-
-\section{Results}
-
-Individual results for each 
-
-\TODO{put in appropriate figures, and any analysis for each}
-
-
-\subsection{Sequence Alignment using Dynamic Programming}
-
-\subsection{Gibbs Sampling}
-
-\subsection{HMM}
-
-
-\section{Conclusion}
-
-
-\TODO{we need to do this one together}
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-
-\TODO{please include any other resources or papers you referenced}
-
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\bibitem{cas:makarova}
-K. S. ~Makarova, Y.I.~Wolf,  O.S. Alkhnbashi, E.V. ~Koonin et al., \emph{An updated evolutionary classification of CRISPR-Cas systems}  \hskip 1em plus 0.5em minus 0.4em\relax http://dx.doi.org/10.1038/nrmicro3569
-
-\bibitem{hmmer}
-HMMER 3.1b2 (February 2015); http://hmmer.org/
-
-\bibitem{buildingBlocks}
-Makarova, Kira S., et al. "An updated evolutionary classification of CRISPR-Cas systems." Nature Reviews Microbiology (2015).
-
-\bibitem{preWork}
-Makarova, Kira S et al. ?Unification of Cas Protein Families and a Simple Scenario for the Origin and Evolution of CRISPR-Cas Systems.? Biology Direct 6 (2011): 38. PMC. Web. 26 Nov. 2016.
+\bibitem{stormo1982use}
+G.~D. Stormo, T.~D. Schneider, L.~Gold, and A.~Ehrenfeucht, ``Use of the
+  ‘perceptron’algorithm to distinguish translational initiation sites in e.
+  coli,'' {\em Nucleic Acids Research}, vol.~10, no.~9, pp.~2997--3011, 1982.
+
+\bibitem{lawrence1993detecting}
+C.~E. Lawrence, S.~F. Altschul, M.~S. Boguski, J.~S. Liu, A.~F. Neuwald, J.~C.
+  Wootton, {\em et~al.}, ``Detecting subtle sequence signals: a gibbs sampling
+  strategy for multiple alignment,'' {\em SCIENCE-NEW YORK THEN WASHINGTON-},
+  vol.~262, pp.~208--208, 1993.
 
 \end{thebibliography}
 
-
-
+% \bibliography{gibbs_sampler}{}
+% \bibliographystyle{ieeetr}
 
 \end{document}
 
 
-=======
->>>>>>> b17b96aa9a606a0fd1402306637d7c645220baf2
