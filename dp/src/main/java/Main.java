@@ -22,22 +22,18 @@ public class Main {
         String matrixDirectory = "src/main/resources/BLOSUM/BLOSUM62";
         ScoringMatrix scoringMatrix = new ScoringMatrix(matrixDirectory);
 
-        String semiAlignFileName = "Cas_SemiGlobal_Alignmenttest";
+        String semiAlignFileName = "Cas_SemiGlobal_Alignment";
         SemiGlobalAlign align = new SemiGlobalAlign(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
         Sequence refSeq = align.getRefSeq();
         List<Alignment> semiAlign = align.getAlignments();
         new AlignmentToCSV(refSeq, semiAlignFileName, semiAlign);
 
-//        SemiGlobalAlign two = new SemiGlobalAlign(scoringMatrix, others, referenceSeq, horInit, verInit, horEnd, verEnd);
-//        Sequence refSeq = two.getRefSeq();
-//        List<Alignment> twotwo = two.getAlignments();
-//        new AlignmentToCSV(refSeq, "SECOND", twotwo);
 
-//        String localAlignFileName = "Cas_Local_Alignmenttest";
-//        LocalAlign local = new LocalAlign(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
-//        Sequence refSequ = local.getRefSeq();
-//        List<Alignment> localAln = local.getAlignments();
-//        new AlignmentToCSV(refSequ, localAlignFileName, localAln);
+        String localAlignFileName = "Cas_Local_Alignment";
+        LocalAlign local = new LocalAlign(scoringMatrix, otherSeq, referenceSeq, horInit, verInit, horEnd, verEnd);
+        Sequence refSequ = local.getRefSeq();
+        List<Alignment> localAln = local.getAlignments();
+        new AlignmentToCSV(refSequ, localAlignFileName, localAln);
 
 
         // test case - comment out for actual run
