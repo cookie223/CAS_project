@@ -1,161 +1,14 @@
-\documentclass[journal,onecolumn]{IEEEtran}
-
-
-
-
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/pkg/ifpdf
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
-
-
-
-
-
-
-% *** CITATION PACKAGES ***
-%
-%\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
-
-
-
-
-
-% *** GRAPHICS RELATED PACKAGES ***
-%
-\ifCLASSINFOpdf
-\usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation
-% can be obtained at: 
-% http://www.ctan.org/pkg/graphicx
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found at:
-% http://www.ctan.org/pkg/epslatex
-%
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
-
-
-
-
-
-% *** MATH PACKAGES ***
-%
-%\usepackage{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics.
-%
-% Note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/amsmath
-
-
-
-
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/pkg/algorithms
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/pkg/algorithmicx
-
-
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
-
+%\documentclass[journal,onecolumn]{IEEEtran}
+\documentclass[11pt, oneside]{article}  
+\usepackage{geometry}    
+\geometry{letterpaper,margin=1in}       
 \usepackage{amsmath} % special symbols
 \usepackage{amssymb} % more special symbols
 \usepackage{epsfig} % needed for including figures
 \usepackage{lipsum} % generate placeholder text
 \usepackage[hyphens]{url} % line break URLs
+\usepackage{color}
+\usepackage{color,soul}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % custom color definition
 \usepackage[figure]{algorithm2e} % advanced written algorithm handling
 \usepackage{graphicx} % advanced graphic manipulation handling
@@ -164,8 +17,468 @@
 \usepackage{makeidx} % create an index
 \usepackage{framed}
 \usepackage{placeins}
+\usepackage{parskip}
+\usepackage{enumerate}
 \usepackage{cite}
+\usepackage{wrapfig}
+\usepackage{placeins}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{cases}
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
+\renewcommand\tabularxcolumn[1]{C{#1}}
 
+
+
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: } #1}}
+
+
+
+\begin{document}
+
+\title{\textbf{Identification of Conserved Regions\\ in CRISPR Protein Family}\\ \text{02-712 Final Project}}
+
+% make the title area
+\maketitle
+
+\begin{center}
+\begin{tabular}{ c c c }
+ Christine Baek & Qi Chu & Yanyu Liang \\ 
+christib@andrew.cmu.edu & qchu@andrew.cmu.edu & yanyul@andrew.cmu.edu \\     
+\end{tabular}\\
+\smallskip
+\smallskip
+Department of Computational Biology, Carnegie Mellon University
+\end{center}
+
+\bigskip
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+The abstract goes here.
+\end{abstract}
+
+
+
+\section{Introduction}
+Project is about the evolution and relationship of various \textit{Cas} (CRISPR-associated) proteins. CRISPR system works by base-pair recognition of foreign genetic material and subsequent nuclease activity on the non-self genome. This has been adopted for the purpose of genetic engineering, and its cleavage based on base-pairing (as opposed to protein-DNA recognition of ZNF or TALENs) provide improved accuracy and reduced costs (no protein engineering involved). CRISPR is as diverse as the species that utilize them, but ultimately have the same function. While \textit{Cas9} (isolated from \textit{Streptococcus pyogenes}) currently the protein of choice for such applications due to smallest number of involved components, it would be beneficial to study the other Cas proteins as well since \textit{s.pyogenes Cas9} is limited in terms of PAM (Protospacer Adjacent Motif), of \texttt{-NGG} or to be used in conjunction with \textit{s.pyogenes Cas9}.
+
+Cas9 currently is predominantly used for genome engineering because it's only 1 protein that you have to worry about, and was the first CRISPR protein that was successfully adapted for genome engineering. Now that we know more about the CRISPR system and somewhat better understanding of what each domain does, it may be beneficial to explore using some of the other CRISPR proteins to achieve same goal. Cas9's big size (1400AA residues) has been source of concern for therapeutic applications. Also, using different Cas proteins potentially offer greater choice of PAM sequence. By identifying conserved motifs between different CRISPR proteins, we can hopefully identify regions of corresponding activity in those CRISPR proteins, and compare to \textit{Cas9} which has been studied in greater detail in terms of structure\cite{cas9structure} or function\cite{mali} compared to other \textit{Cas} proteins. 
+
+ In this paper, we employ 3 different approaches to identify motifs, or conserved regions of significance in terms of \textit{Cas} function for better understanding of the \textit{Cas} protein family and mechanism of each component. 
+
+\subsection{CRISPR/Cas} 
+
+CRISPR(Clustered regularly interspaced short palindromic repeats) is a microbial adaptive immune system. While bacteria and archaea utilize CRISPR system to store foreign genetic material to distinguish self vs non-self, this system has been adopted and exploited by scientists since 2012 genome engineering tool, as discussed in \cite{jenniferdoudna} and \cite{fengzhang}. CRISPR initially began as next-generation tool to replace ZNFs and TALENs, it has since then been modified for non-genome engineering purposes such as CRISPRi \cite{stanleyqi}. There also have been attempts to reduce off-target effects by modifying the nuclease domain\cite{doublenick} . 
+
+Naturally in bacteria or archaea, CRISPR proteins have distinct roles in the three phases of CRISPR system as follows : 
+\begin{enumerate}
+\item Acquisition : foreign genetic material enters microbe, which is cut by CRISPR protein and inserted into CRISPR array. This fragment is now a \textit{spacer} separated by \textit{repeats}, hence the name
+\item Expression : CRISPR array, which include multiple spacers separated by repeats, is expressed as a single RNA. This is then cleaved into individual units known as \textit{crRNA}, which contain single spacer. \textit{crRNA} forms complex with one or more CRISPR proteins (depending on the CRISPR system)
+\item Interference : upon recognition of specific foreign genetic material via base-pairing with the spacer in crRNA, CRISPR protein in complex with the spacer cleaves the foreign genetic material. 
+\end{enumerate}
+
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.4]{images/crisprOverview}
+      \caption{Overview of CRISPR proteins and their function ~\cite{annualreview}}
+      \label{crisprOverview}
+\end{figure}
+
+\subsection{Past Approaches}
+\TODO{Qi : summarize the HMMer approach?}
+
+\subsection{Approaches in This Paper}
+\TODO{everyone?}
+
+
+
+\subsection{Goal of Paper}
+
+
+\TODO{Yanyu : short discussion of our goal in this paper}
+
+
+
+\section{Methods}
+
+All code and output files are available on \texttt{https://github.com/cookie223/CAS\_project}. 
+
+Any reference to files in this report indicate filepath based on root of the repository. 
+
+In this paper, we use 3 different approaches, each with different strengths and limits as for discovering patterns and information from multiple related sequences. Each method has its own section which discusses overview of algorithm/model, pros and cons of given model, detailed protocol and parameters, and analysis performed. 
+
+Protein sequences were used (as opposed to DNA), to uncover preservation of \textit{Cas} protein's functional motifs. Protein sequence analysis much more appropriate for such purpose than DNA sequence especially for distantly related sequences. 
+
+\subsection{Data Retrieval}
+
+\TODO{Qi : talk about source of data}
+
+\subsection{Sequence Alignment using Dynamic Programming} \label{dpProtocol}
+
+Semiglobal ailgnment using Needleman-Wunsch\cite{needlemanwunsch} and Local Alignment using Smith-Waterman Algorithm\cite{smithwaterman} were implemented for pairwise sequence comparison.
+Code available at \texttt{https://github.com/cookie223/CAS\_project/tree/master/dp}
+
+
+\subsubsection{Model \& Algorithm Overview}
+
+Semiglobal alignment and local alignment were performed on various \textit{Cas} sequences. Because certain families of \textit{Cas} proteins are composed of multiple genes, it is impossible to do a global alignment, or multiple sequence alignment with all \textit{Cas} sequences. Instead, \textit{s. pyogenes Cas9} was used as a reference sequence, to which all other \textit{Cas} sequence was aligned to in pairwise sequence alignment. 
+
+
+\subsubsection{Pros and Cons}
+
+Because alignment were done against \textit{s. pyogenes Cas9} rather than a progressive alignment, for \textit{Cas} sequences highly divergent from \textit{s. pyogenes Cas9} may be aligned to an inaccurate site. Each alignment is guaranteed to return the global maximum or the most optimal alignment with given parameters, which may or may not be the actual corresponding motif. Also, this method assumes site independence, and does not discriminate conserved regions (which motifs would likely be part of) as opposed to fast-evolving regions.
+
+
+\subsubsection{Protocol} 
+Following parameters were used for sequence alignment :
+\begin{itemize}
+\item Scoring Matrix = BLOSUM62 (BLASTP default)
+\item Affine Gap Penalty = -10 (BLASTP default is 11)
+\item Gap Extension Penalty = -1 (BLASTP default)
+\item End Gap Penalty (for Semi-Global only) = -3
+\end{itemize}
+
+Gap opening / affine gap penalty was slightly lowered to relax requirement for opening gap, as this experiment is for identifying local regions rather than strict sequence search.
+
+
+\subsubsection{Analysis}
+
+After each \textit{Cas} sequence was aligned to \textit{s. pyogenes Cas9}, it was then analyzed for the following values :
+\begin{itemize}
+\item Start position (row, col) of traceback
+\item End position (row, col) of traceback
+\item Alignment score (based on parameters discussed in section~\ref{dpProtocol}
+\item Average Score per base : alignment score / number of bases in alignment
+\item \% Sequence Aligned : length of alignment / length of query (non-reference) sequence
+\end{itemize}
+
+This was done for both semi-global and local alignment outputs. 
+
+
+\subsection{Gibbs Sampling}
+
+\subsubsection{Model \& Algorithm Overview}
+talk about overview of what the method does (method itself, not in detail of how you used it)
+
+
+\subsubsection{Pros and Cons}
+of using the method - what is it capable of, what are the limitations ?
+
+
+\subsubsection{Protocol}
+implementation details - justifications for decisions you made when you ran the experiment, parameters, etc.
+
+
+\subsubsection{Analysis}
+Discuss METHOD for analysis, not the actual result/analysis itself. 
+
+\subsection{Domain-specific profile HMM}
+
+\subsubsection{Model \& Algorithm Overview}
+To find out whether a sequence of amino acid belongs some domain, we can build a model of the domain and try to match the sequence of the model. Profile Hidden Markov Model is one of the 
+models we can build to figure out whether a sequence contains the domain. The model of profile HMM is shown in Figure \ref{HMM}. 
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.7]{images/profileHMM}
+      \caption{Profile Hidden Markov Model\cite{hmmer}}
+      \label{HMM}
+\end{figure}
+
+
+\subsubsection{Pros and Cons}
+\begin{itemize}
+\item Pros
+\begin{enumerate}
+\item We can leverage the abundant prior knowledge of Cas9 domain markers by building profile HMM using the alignment of the domains rather than the full sequence.
+\item Compared with pair-wise sequence alignment, HMM can find more cases of distantly related sequences.
+\item As shown in the figure, HMM can model insertions and deletions.
+\end{enumerate}
+\item Cons
+\begin{enumerate}
+\item To leverage the prior knowledge of domain markers, those markers need to be fetched separately from other data source rather than learned by the algorithm.
+\item The number of parameters is very large and they need to be optimized.
+\end{enumerate}
+\end{itemize}
+
+
+\subsubsection{Protocol}
+\begin{enumerate}[a.]
+\item A set of \textit{Cas9} or \textit{Cas5} sequences and their domain markers are fetched from EMBL-EBI (http://www.ebi.ac.uk).
+\item Sequences of each of the shared domains are subtracted from the full \textit{Cas9} or \textit{Cas5} sequences.
+\item For each domain, multiple sequences from different \textit{Cas9} or \textit{Cas5} are aligned by Clustal Omega (http://www.clustal.org/).
+\item  A profile HMM is built on the multiple sequence alignment for each domain by Hmmer (http://hmmer.org/)\cite{hmmer}.
+\item Search for matches using the profile HMM in the sequences of all previously downloaded \textit{Cas} family proteins.
+\end{enumerate}
+
+
+\subsubsection{Analysis}
+For method testing, a set of globin sequences given in Hmmer\cite{hmmer} is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
+For output analysis, HMM is able to give the probability of given sequence emitted from the underlying domain profile HMM.
+
+
+
+
+
+\section{Results}
+
+Each of the three approaches for identifying motifs of \textit{Cas} proteins and the resulting data are presented below. 
+
+
+\subsection{Sequence Alignment using Dynamic Programming}
+
+\begin{minipage}{\linewidth}
+\smallskip
+\centering
+\captionof{table}{Semi-Global Alignment Output} \label{sgoutput} 
+\begin{tabular}{ p{1.25in} C{.85in} *4{C{.75in}}}\toprule[1.5pt]
+\bf Gene Name & \bf Alignment Score & \bf Average Score / base & \bf \% Sequence aligned & \bf Traceback Start & \bf Traceback End\\\midrule
+Cas10\_Mtuberculosis & 234 & 0.212148685 & 1 & [1365][810] & [330][1]\\ 
+Cas10\_Phorikoshii & 335 & 0.249813572 & 1 & [1368][762] & [41][1]\\ 
+Cas10\_Ssolfataricus & 364 & 0.27063197 & 1 & [1322][1046] & [62][1]\\ 
+Cas10\_Tvolcanium & 343 & 0.305976806 & 1 & [1203][776] & [146][1]\\ 
+Cas1\_DvsH\_plasmid & 160 & 0.282186949 & 1 & [1297][344] & [734][1]\\ 
+Cas1\_Gvaginalis & 163 & 0.332653061 & 1 & [1367][321] & [886][1]\\ 
+Cas1\_K-12 & 105 & 0.243055556 & 0.911764706 & [428][306] & [1][28]\\ 
+Cas1\_Tdenticola & 176 & 0.387665198 & 1 & [519][291] & [79][1]\\ 
+Cas2\_K-12 & 65 & 0.5 & 1 & [528][95] & [400][1]\\ 
+Cas2\_Lsalivarius & 64 & 0.444444444 & 1 & [617][102] & [476][1]\\ 
+Cas2\_StB20-like & 68 & 0.586206897 & 1 & [217][88] & [102][1]\\ 
+Cas3\_DvsH\_plasmid & 152 & 0.145315488 & 1 & [1059][703] & [32][1]\\ 
+Cas3\_Gvaginalis & 260 & 0.229681979 & 0.858199753 & [1119][811] & [1][116]\\ 
+Cas3\_K-12 & 233 & 0.185805423 & 1 & [1254][889] & [29][1]\\ 
+Cas4\_K-12 & 171 & 0.341317365 & 1 & [1323][364] & [833][1]\\ 
+Cas4\_Ssolfataricus & 87 & 0.294915254 & 1 & [679][203] & [387][1]\\ 
+Cas4\_TtenaxKra & 57 & 0.230769231 & 1 & [573][191] & [330][1]\\ 
+Cas5\_Gvaginalis & 140 & 0.309050773 & 1 & [1185][292] & [733][1]\\ 
+Cas5\_K-12 & 79 & 0.302681992 & 0.8 & [261][225] & [1][46]\\ 
+Cas6\_Cbotulinum & 158 & 0.478787879 & 1 & [740][230] & [414][1]\\ 
+Cas6\_Hvolcanii\_plasmid & 99 & 0.25848564 & 1 & [1309][273] & [929][1]\\ 
+Cas6\_Ssolfataricus & 118 & 0.280952381 & 1 & [1117][288] & [701][1]\\ 
+Cas7\_Hvolcanii\_plasmid & 164 & 0.316602317 & 1 & [899][341] & [390][1]\\ 
+Cas7\_K-12 & 171 & 0.341317365 & 1 & [1323][364] & [833][1]\\ 
+Cas7\_Ssolfataricus & 147 & 0.267272727 & 1 & [950][312] & [404][1]\\ 
+Cas8\_LsV & 136 & 0.265625 & 1 & [1289][314] & [783][1]\\ 
+Cas8\_Pdistasois & 237 & 0.295511222 & 1 & [1342][573] & [559][1]\\ 
+Cas8\_Pgingivalis & 212 & 0.280794702 & 1 & [1340][500] & [609][1]\\ 
+Cas9\_Bthermosphacta & 1726 & 1.249818972 & 1 & [1365][1301] & [47][1]\\ 
+Cas9\_Cindologenes & 476 & 0.282157676 & 1 & [1366][1444] & [3][1]\\ 
+Cas9\_Cochracea & 375 & 0.276344878 & 0.650315347 & [1322][1427] & [1][500]\\ 
+Cas9\_Hpullorum & 180 & 0.27820711 & 1 & [643][345] & [4][1]\\ 
+Cas9\_Hpullorum\_2 & 330 & 0.391459075 & 1 & [1347][703] & [549][1]\\ 
+Cas9\_Kkingae & 520 & 0.370634355 & 0.997172479 & [1341][1061] & [1][4]\\ 
+Cas9\_Movipneumoniae & 519 & 0.340998686 & 0.988216811 & [1349][1273] & [1][16]\\ 
+Cas9\_Nlactamica & 505 & 0.353889278 & 0.994459834 & [1368][1083] & [1][7]\\ 
+Cas9\_Pacidlactici & 1786 & 1.209207854 & 0.999267399 & [1366][1365] & [1][2]\\ 
+Cas9\_Pnultocida & 510 & 0.365068003 & 0.997161779 & [1348][1057] & [1][4]\\ 
+Cas9\_Ranatipestifer & 391 & 0.239143731 & 1 & [1366][1406] & [3][1]\\ 
+Cas9\_Sgallolyticus & 4529 & 3.274765004 & 0.999271137 & [1368][1372] & [1][2]\\ 
+Cas9\_Smoniliformis & 514 & 0.327597196 & 1 & [1368][1260] & [3][1]\\ 
+Cas9\_Spaucimobilis & 415 & 0.290616246 & 1 & [1362][1091] & [3][1]\\
+\bottomrule[1.25pt]
+\end {tabular}\par
+\bigskip
+Method as discussed in section~\ref{dpProtocol}. Visualization of data is available in Figure~\ref{dp1}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\smallskip
+\centering
+\captionof{table}{Local Alignment Output} \label{locoutput} 
+\begin{tabular}{ p{1.25in} C{.85in} *4{C{.75in}}}\toprule[1.5pt]
+\bf Gene Name & \bf Alignment Score & \bf Average Score / base & \bf \% Sequence aligned & \bf Traceback Start & \bf Traceback End\\\midrule
+Cas10\_Mtuberculosis & 317 & 0.239064857 & 0.988888889 & [1345][808] & [46][8]\\ 
+Cas10\_Phorikoshii & 313 & 0.246650906 & 0.874015748 & [1368][705] & [105][40]\\ 
+Cas10\_Ssolfataricus & 432 & 0.316020483 & 0.864244742 & [1365][929] & [16][26]\\ 
+Cas10\_Tvolcanium & 362 & 0.312878133 & 0.923969072 & [1312][749] & [165][33]\\ 
+Cas1\_DvsH\_plasmid & 152 & 0.290630975 & 0.959302326 & [1237][342] & [728][13]\\ 
+Cas1\_Gvaginalis & 120 & 0.270880361 & 0.99376947 & [1332][320] & [904][2]\\ 
+Cas1\_K-12 & 107 & 0.29558011 & 0.666666667 & [1340][263] & [983][60]\\ 
+Cas1\_Tdenticola & 124 & 0.294536817 & 0.965635739 & [1096][287] & [687][7]\\ 
+Cas2\_K-12 & 43 & 0.651515152 & 0.663157895 & [1119][86] & [1055][24]\\ 
+Cas2\_Lsalivarius & 77 & 0.611111111 & 0.794117647 & [621][101] & [496][21]\\ 
+Cas2\_StB20-like & 72 & 1.028571429 & 0.568181818 & [738][87] & [669][38]\\ 
+Cas3\_DvsH\_plasmid & 210 & 0.195712954 & 0.944523471 & [1099][683] & [48][20]\\ 
+Cas3\_Gvaginalis & 261 & 0.244382022 & 0.937114673 & [1317][790] & [272][31]\\ 
+Cas3\_K-12 & 248 & 0.245787909 & 0.750281215 & [1232][873] & [265][207]\\ 
+Cas4\_K-12 & 177 & 0.353293413 & 0.848901099 & [1355][325] & [856][17]\\ 
+Cas4\_Ssolfataricus & 100 & 0.304878049 & 0.827586207 & [1308][180] & [981][13]\\ 
+Cas4\_TtenaxKra & 60 & 0.810810811 & 0.277486911 & [883][175] & [811][123]\\ 
+Cas5\_Gvaginalis & 159 & 0.42513369 & 0.863013699 & [797][274] & [424][23]\\ 
+Cas5\_K-12 & 77 & 0.292775665 & 0.68 & [493][184] & [233][32]\\ 
+Cas6\_Cbotulinum & 132 & 0.371830986 & 0.82173913 & [453][215] & [99][27]\\ 
+Cas6\_Hvolcanii\_plasmid & 93 & 0.322916667 & 0.648351648 & [755][225] & [468][49]\\ 
+Cas6\_Ssolfataricus & 121 & 0.292978208 & 0.954861111 & [1208][286] & [799][12]\\ 
+Cas7\_Hvolcanii\_plasmid & 177 & 0.5 & 0.692082111 & [416][297] & [63][62]\\ 
+Cas7\_K-12 & 177 & 0.353293413 & 0.848901099 & [1355][325] & [856][17]\\ 
+Cas7\_Ssolfataricus & 139 & 0.445512821 & 0.769230769 & [1144][311] & [837][72]\\ 
+Cas8\_LsV & 168 & 0.305454545 & 0.984076433 & [592][313] & [43][5]\\ 
+Cas8\_Pdistasois & 222 & 0.308333333 & 0.848167539 & [772][572] & [65][87]\\ 
+Cas8\_Pgingivalis & 192 & 0.309677419 & 0.666 & [690][498] & [75][166]\\ 
+Cas9\_Bthermosphacta & 1736 & 1.260711692 & 0.996156802 & [1361][1296] & [47][1]\\ 
+Cas9\_Cindologenes & 658 & 0.443396226 & 0.810249307 & [1366][1170] & [3][1]\\ 
+Cas9\_Cochracea & 493 & 0.361172161 & 0.62789068 & [1352][896] & [3][1]\\ 
+Cas9\_Hpullorum & 174 & 0.280645161 & 0.985507246 & [616][342] & [6][3]\\ 
+Cas9\_Hpullorum\_2 & 351 & 0.445997459 & 0.928876245 & [1345][701] & [614][49]\\ 
+Cas9\_Kkingae & 528 & 0.372881356 & 0.97737983 & [1368][1042] & [3][6]\\ 
+Cas9\_Movipneumoniae & 620 & 0.417508418 & 0.865671642 & [1357][1118] & [2][17]\\ 
+Cas9\_Nlactamica & 580 & 0.420594634 & 0.874422899 & [1359][955] & [3][9]\\ 
+Cas9\_Pacidlactici & 1793 & 1.214769648 & 0.998534799 & [1365][1364] & [1][2]\\ 
+Cas9\_Pnultocida & 577 & 0.416907514 & 0.904446547 & [1361][961] & [3][6]\\ 
+Cas9\_Ranatipestifer & 529 & 0.354795439 & 0.826458037 & [1368][1162] & [3][1]\\ 
+Cas9\_Sgallolyticus & 4540 & 3.289855072 & 0.997084548 & [1366][1369] & [1][2]\\ 
+Cas9\_Smoniliformis & 543 & 0.378133705 & 0.843650794 & [1368][1063] & [3][1]\\ 
+Cas9\_Spaucimobilis & 404 & 0.289191124 & 0.973418882 & [1332][1063] & [4][2]\\
+\bottomrule[1.25pt]
+\end {tabular}\par
+\bigskip
+Method as discussed in section~\ref{dpProtocol}. Visualization of data is available in Figure~\ref{dp2}
+\end{minipage}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.45]{images/dp_figure1}
+      \caption{Pairwise sequence alignment of various \textit{Cas} protein sequences against \textit{s. pyogenes Cas9} protein sequence. Green bars show coverage of semi-global alignment of individual sequence against \textit{s. pyogenes Cas9}. Purple bars show coverage of local alignment of individual sequence against \textit{s. pyogenes Cas9}. Darker color indicates higher average score per base, and therefore higher sequence similarity. Each grey marker represents 10 amino acid residues}
+      \label{dp1}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.45]{images/dp_figure2}
+      \caption{Pairwise sequence alignment of various \textit{Cas} protein sequences against \textit{s. pyogenes Cas9} protein sequence. Green bars show coverage of semi-global alignment of individual sequence against \textit{s. pyogenes Cas9}. Purple bars show coverage of local alignment of individual sequence against \textit{s. pyogenes Cas9}. Darker color indicates higher average score per base, and therefore higher sequence similarity. Each grey marker represents 10 amino acid residues}
+      \label{dp2}
+\end{figure}
+
+\subsection{Gibbs Sampling}
+
+f
+
+i
+
+l
+
+l
+
+.
+
+.
+
+.
+
+
+
+
+\subsection{HMM}
+
+
+f
+
+i
+
+l
+
+l
+
+.
+
+.
+
+.
+
+
+\section{Conclusion}
+
+.
+.
+.
+
+
+\TODO{we need to do this one together}
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+\TODO{please include any other resources or papers you referenced}
+
+\begin{thebibliography}{1}
+
+\bibitem{cas:makarova}
+K. S. ~Makarova, et al., \emph{An updated evolutionary classification of CRISPR-Cas systems}  \hskip 1em plus 0.5em minus 0.4em\relax http://dx.doi.org/10.1038/nrmicro3569, 28 September 2015
+
+\bibitem{needlemanwunsch}
+Saul B. Needleman, Christian D. Wunsch, \emph{A general method applicable to the search for similarities in the amino acid sequence of two proteins} \hskip 1em plus 0.5em minus 0.4em\relax http://www.sciencedirect.com/science/article/pii/0022283670900574, 28 March 1970
+
+\bibitem{smithwaterman}
+Smith, Temple F., Waterman, Michael S., \emph{Identification of Common Molecular Subsequences} \hskip 1em plus 0.5em minus 0.4em\relax Journal of Molecular Biology. 147: 195-197. doi:10.1016/0022-2836(81)90087-5. PMID 7265238., 1981
+
+\bibitem{annualreview}
+Devaki Bhaya,Michelle Davison, and Rodolphe Barrangou, \emph{CRISPR-Cas Systems in Bacteria and Archaea: Versatile Small RNAs for Adaptive Defense and Regulation} \hskip 1em plus 0.5em minus 0.4em\relax Annual Review of Genetics Vol. 45: 273-297 (Volume publication date December 2011) DOI: 10.1146/annurev-genet-110410-132430
+
+\bibitem{mali}
+Mali, P., Esvelt, K. M., \& Church, G. M. (2013). Cas9 as a versatile tool for engineering biology. Nature Methods, 10(10), 957?963. doi:10.1038/nmeth.2649
+
+\bibitem{jenniferdoudna}
+Jinek M, Chylinski K, Fonfara I, Hauer M, Doudna JA, Charpentier E., \emph{A programmable dual-RNA-guided DNA endonuclease in adaptive bacterial immunity} \hskip 1em plus 0.5em minus 0.4em\relax Science. 2012 Aug 17;337(6096):816-21. doi: 10.1126/science.1225829. Epub 2012 Jun 28.
+
+\bibitem{fengzhang}
+Ran, F Ann and Hsu, Patrick D and Wright, Jason and Agarwala, Vineeta and Scott, David A and Zhang, Feng, \emph{Genome engineering using the CRISPR-Cas9 system} \hskip 1em plus 0.5em minus 0.4em\relax Nat. Protocols(2013) http://dx.doi.org/10.1038/nprot.2013.143
+
+
+
+\bibitem{stanleyqi}
+Qi LS, Larson MH, Gilbert LA, Doudna JA, Weissman JS, Arkin AP, Lim WA., \emph{Repurposing CRISPR as an RNA-guided platform for sequence-specific control of gene expression} \hskip 1em plus 0.5em minus 0.4em\relax Cell. 2013 Feb 28;152(5):1173-83. doi: 10.1016/j.cell.2013.02.022.
+
+
+\bibitem{cas9structure}
+Hiroshi Nishimasu, F. Ann Ran, Patrick D. Hsu, Silvana Konermann, Soraya I. Shehata, Naoshi Dohmae, Ryuichiro Ishitani, Feng Zhang, Osamu Nureki \emph{Crystal Structure of Cas9 in Complex with Guide RNA and Target DNA} http://www.cell.com/cell/pdf/S0092-8674(14)00156-1.pdf February 13, 2014
+
+\bibitem{doublenick}
+Ran FA, Hsu PD, Lin C-Y, et al. \emph{Double nicking by RNA-guided CRISPR Cas9 for enhanced genome editing specificity.} Cell. 2013;154(6):1380-1389. doi:10.1016/j.cell.2013.08.021.
+
+\bibitem{hmmer}
+HMMER 3.1b2 (February 2015); http://hmmer.org/
+
+\end{thebibliography}
+
+
+
+
+\end{document}
 
 % *** SUBFIGURE PACKAGES ***
 %\ifCLASSOPTIONcompsoc
@@ -259,6 +572,7 @@
 % to submit to, of course. )
 
 
+<<<<<<< HEAD
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -333,6 +647,8 @@ Functionally related regions can be clustered by evidences in experimental data.
 \TODO{Yanyu : short discussion of our goal in this paper}
 
 
+=======
+>>>>>>> b17b96aa9a606a0fd1402306637d7c645220baf2
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
 % For figures, \caption should occur after the \includegraphics.
@@ -428,6 +744,7 @@ Functionally related regions can be clustered by evidences in experimental data.
 % \fnbelowfloat command of the stfloats package.
 
 
+<<<<<<< HEAD
 \section{Methods}
 
 We used 3 differenr approaches .. blahblahblah. All used the same .fa sequence, etc. etc. 
@@ -581,3 +898,5 @@ Makarova, Kira S et al. ?Unification of Cas Protein Families and a Simple Scenar
 \end{document}
 
 
+=======
+>>>>>>> b17b96aa9a606a0fd1402306637d7c645220baf2

@@ -25,7 +25,7 @@ public class Sequence {
         StringBuilder sb  = new StringBuilder();
         raw.forEach(line->{
             if (line.contains(">")) {
-                name = line;
+                name = line.substring(1);
             } else {
                 sb.append(line);
             }

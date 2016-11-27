@@ -17,7 +17,8 @@ public class Alignment {
     int endCol;
     int startRow;
     int startCol;
-
+    Double avgScore; // avg score per position
+    Double percent; // percent of other sequence in the alignment (=1 in semi global)
 
 
     public Alignment(Sequence reference, Sequence other, Cell[][] cells, Cell tbp) {
@@ -27,6 +28,8 @@ public class Alignment {
         this.cells = cells;
         this.tracebackPoint = tbp;
         readTraceBack();
+        this.avgScore = 1.0 * score/(referenceAligned.length());
+        this.percent = 1.0 * (otherAligned.replaceAll("-","")).length() / other.size;
     }
 
     public String toString() {
