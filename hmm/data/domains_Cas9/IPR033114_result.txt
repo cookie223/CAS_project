@@ -1,0 +1,382 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  IPR033114.hmm
+# target sequence database:        ../../../genes/complete_amino_acids.fa
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       IPR033114  [M=157]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                    -----------
+    2.7e-68  220.1   5.0    2.7e-68  220.1   5.0    3.2  4  Cas9_Sgallolyticus.fasta_1   
+    6.5e-58  186.4   1.3    2.6e-57  184.4   1.3    2.1  1  Cas9_Pacidlactici.fasta_1    
+    2.7e-46  148.7   8.3    2.7e-46  148.7   8.3    2.3  2  Cas9_Bthermosphacta.fasta_1  
+      2e-20   64.6   2.7    5.8e-20   63.1   2.7    1.8  1  Cas9_Pnultocida.fasta_1      
+    1.9e-19   61.4   1.5    4.3e-19   60.3   1.5    1.6  1  Cas9_Nlactamica.fasta_1      
+    1.4e-18   58.6   0.7    1.4e-18   58.6   0.7    2.2  2  Cas9_Kkingae.fasta_1         
+    1.5e-17   55.3   2.8    1.5e-17   55.3   2.8    3.2  2  Cas9_Cindologenes.fasta_1    
+    5.3e-17   53.5  13.7    5.3e-17   53.5  13.7    2.9  4  Cas9_Movipneumoniae.fasta_1  
+    1.6e-16   51.9   0.1    8.7e-16   49.5   0.1    2.1  2  Cas9_Hpullorum_2.fasta_1     
+    8.9e-16   49.5   5.6    8.9e-16   49.5   5.6    4.1  2  Cas9_Smoniliformis.fasta_1   
+    1.3e-14   45.7   2.3    1.3e-14   45.7   2.3    2.9  3  Cas9_Ranatipestifer.fasta_1  
+    1.3e-13   42.5   7.2    1.3e-13   42.5   7.2    3.4  3  Cas9_Cochracea.fasta_1       
+    2.5e-13   41.6   0.0    5.3e-13   40.5   0.0    1.6  1  Cas9_Spaucimobilis.fasta_1   
+
+
+Domain annotation for each sequence (and alignments):
+>> Cas9_Sgallolyticus.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.8   0.4       6.9        22      13      28 ..     334     349 ..     321     397 .. 0.51
+   2 ?   -1.6   0.1       1.4       4.6     100     156 ..     436     495 ..     434     496 .. 0.75
+   3 ?   -2.7   0.5       3.2        10      20      54 ..     533     568 ..     522     581 .. 0.57
+   4 !  220.1   5.0   8.4e-69   2.7e-68       1     157 []     771     928 ..     771     928 .. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: -3.8 bits;  conditional E-value: 6.9
+                   IPR033114  13 kklekalkelgskilk 28 
+                                 kkl++ +k+ +s   +
+  Cas9_Sgallolyticus.fasta_1 334 KKLKEFIKNNASDKYD 349
+                                 2333333332222222 PP
+
+  == domain 2  score: -1.6 bits;  conditional E-value: 1.4
+                   IPR033114 100 kNrkKsdkvpseevv........kkmkefWkkllkakliskrKfdnLtkaegeltekekagFikr 156
+                                 +N+ K +k+ +  +         k+ +  W + ++ + i+   fd++  +e     k +++Fi+r
+  Cas9_Sgallolyticus.fasta_1 436 ENQAKIEKILTFRIPyyvgplarKNSRFAWAEYHSDEKITPWNFDEIIDKE-----KSAEKFITR 495
+                                 67777777777766677777775666677***************9999887.....666667766 PP
+
+  == domain 3  score: -2.7 bits;  conditional E-value: 3.2
+                   IPR033114  20 kelgskilkeevrdll.keevdnselrkdrlyLYyl 54 
+                                 ++ +s+  + ++++++ ++  ++++  ++ ++L yl
+  Cas9_Sgallolyticus.fasta_1 533 EQGKSNFFDANMKQEIfEHVFKENRKVTKDKFLNYL 568
+                                 444446666666666643334444444444466555 PP
+
+  == domain 4  score: 220.1 bits;  conditional E-value: 8.4e-69
+                   IPR033114   1 teqkkkkseqRlkklekalkelgskilkeevrdllkeevdnselrkdrlyLYylqnGkdmYtgekldidklskYdiDHiiPqs 83 
+                                 t++++++s+qRlkkl+++lkelgs+il+ee  ++++ +v+n++l++drl+LYy+qnGkdmYtg++ldid+ls+YdiDHiiPq+
+  Cas9_Sgallolyticus.fasta_1 771 TNRGRNQSQQRLKKLQDSLKELGSNILNEEKPSYIEGKVENNHLQDDRLFLYYIQNGKDMYTGDELDIDHLSDYDIDHIIPQA 853
+                                 57899****************************************************************************** PP
+
+                   IPR033114  84 fikddSldNrVLvsskkNrkKsdkvpseevvkkmkefWkkllkakliskrKfdnLtkae.geltekekagFikrq 157
+                                 fikddS+dNrVL+ss+kNr+Ksd+vps ++v+ +k+ W +l+k++liskrKfdnLtkae g+lte++kagFikrq
+  Cas9_Sgallolyticus.fasta_1 854 FIKDDSIDNRVLTSSAKNRGKSDDVPSLDIVHDRKADWIRLYKSGLISKRKFDNLTKAErGGLTENDKAGFIKRQ 928
+                                 **************************************************************************9 PP
+
+>> Cas9_Pacidlactici.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  184.4   1.3   8.2e-58   2.6e-57       6     157 .]     785     935 ..     781     935 .. 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 184.4 bits;  conditional E-value: 8.2e-58
+                  IPR033114   6 kkseqRlkklekalkelgskilkeevrdllkeevdnselrkdrlyLYylqnGkdmYtgekldidklskYdiDHiiPqsfikddS 89 
+                                +++++Rl++lek++++++ ++++  ++++l e  +n+++ +d++yLY++q G+d+Ytg+++++dkl++Yd+DHi+PqsfikddS
+  Cas9_Pacidlactici.fasta_1 785 QRTQSRLRTLEKLYESAE-EVVDAGLTAELAEFKENKHVLSDKYYLYFTQLGRDVYTGDTISLDKLNDYDVDHILPQSFIKDDS 867
+                                689*************97.568999*********************************************************** PP
+
+                  IPR033114  90 ldNrVLvsskkNrkKsdkvpseevvkkmkefWkkllkakliskrKfdnLtkaegeltekekagFikrq 157
+                                ldNrVL+ ++ N++Ksd+vp++ + kkm +fW+ ll++++iskrK++nL +++++++++ ++gFi+rq
+  Cas9_Pacidlactici.fasta_1 868 LDNRVLTIRAVNNGKSDNVPAKMFGKKMGSFWRYLLDNGMISKRKYNNLITDPDNISKYAQKGFINRQ 935
+                                *******************************************************************9 PP
+
+>> Cas9_Bthermosphacta.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.7   0.1       6.7        22     120     138 ..     600     618 ..     590     631 .. 0.69
+   2 !  148.7   8.3   8.3e-47   2.7e-46       4     157 .]     748     900 ..     745     900 .. 0.91
+
+  Alignments for each domain:
+  == domain 1  score: -3.7 bits;  conditional E-value: 6.7
+                    IPR033114 120 fWkkllkakliskrKfdnL 138
+                                  +W+++ + k i +rK+++ 
+  Cas9_Bthermosphacta.fasta_1 600 YWSTVFEDKKIMRRKLSEY 618
+                                  7888888888888887653 PP
+
+  == domain 2  score: 148.7 bits;  conditional E-value: 8.3e-47
+                    IPR033114   4 kkkkseqRlkklekalkelgskilkeevrdllkeevdnselrkdrlyLYylqnGkdmYtgekldidklskYdiDHiiPqsfi 85 
+                                  ++k+s+ R k +eka+ +l+++    ++++l + +   ++l+++rl+LY++qnGk+mY+ge+ldi++l++Y++DHi+Pqs+i
+  Cas9_Bthermosphacta.fasta_1 748 ESKRSTPRDKFIEKAYAQLKKETDTFNLEHLKELKQRSKQLSSQRLFLYFIQNGKCMYSGEHLDIERLDSYEVDHILPQSYI 829
+                                  56899**************997555555555566778899****************************************** PP
+
+                    IPR033114  86 kddSldNrVLvsskkNrkKsdkvpse.evvkkmkefWkkllkakliskrKfdnLtkaegeltekekagFikrq 157
+                                  kd+S++N  Lv++ +N++K+d++  + +++++ ++ W++l++a+li+++Kf nLt+++  +t+++k+gFi+rq
+  Cas9_Bthermosphacta.fasta_1 830 KDNSIENLALVKKVENQRKKDSLLLNsSIINQNYSRWEQLKNAGLIGEKKFRNLTRTK--ITDRDKEGFIARQ 900
+                                  **********************97661566999************************8..************9 PP
+
+>> Cas9_Pnultocida.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   63.1   2.7   1.8e-20   5.8e-20      16     140 ..     514     646 ..     500     658 .. 0.66
+
+  Alignments for each domain:
+  == domain 1  score: 63.1 bits;  conditional E-value: 1.8e-20
+                IPR033114  16 ekalkelgskilkeevrdllkeevdnselrkd.rlyLYylqnGkdmYtgekldidkl..skY.diDHiiPqsfikddSldNrVLvs 97 
+                              ++  + ++++   +++++l  +  ++ + ++  +  LY  q Gk++Y+g++++i++l  + Y +iDH +P s + ddS +N+VLv 
+  Cas9_Pnultocida.fasta_1 514 QQEDNRTKRESAVQKFKELFSDFSSEPKSKDIlKFRLYEQQHGKCLYSGKEINIHRLneKGYvEIDHALPFSRTWDDSFNNKVLVL 599
+                              333333333333333444444434444443332445999******************7655669********************** PP
+
+                IPR033114  98 skkNrkKsdkvpseevv.kkmkefWkkllkaklisk...rKfdnLtk 140
+                               ++N++K ++ p+e ++ k  +e Wk++    l s+    K ++L++
+  Cas9_Pnultocida.fasta_1 600 ASENQNKGNQTPYEWLQgKINSERWKNFVALVLGSQcsaAKKQRLLT 646
+                              **************999444578899987765544311144455444 PP
+
+>> Cas9_Nlactamica.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   60.3   1.5   1.3e-19   4.3e-19      48     156 ..     555     665 ..     511     666 .. 0.75
+
+  Alignments for each domain:
+  == domain 1  score: 60.3 bits;  conditional E-value: 1.3e-19
+                IPR033114  48 rlyLYylqnGkdmYtgekldidkl..skY.diDHiiPqsfikddSldNrVLvsskkNrkKsdkvpseevv.kkmkefWkkllkakl 129
+                              +l LY  q Gk++Y+g+++++ +l  + Y +iDH +P s + ddS +N+VLv  ++N++K ++ p+e +  k  ++ W++++ +  
+  Cas9_Nlactamica.fasta_1 555 KLRLYEQQHGKCLYSGKEINLVRLneKGYvEIDHALPFSRTWDDSFNNKVLVLGSENQNKGNQTPYEYFNgKDNSREWQEFKAR-- 638
+                              6779********************7645659************************************99966678899999765.. PP
+
+                IPR033114 130 iskrKfdnLtkaegeltekekagFikr 156
+                              + + +f + +k+   l++ +++gF +r
+  Cas9_Nlactamica.fasta_1 639 VETSRFPRSKKQRILLQKFDEEGFKER 665
+                              455567777777766777777777655 PP
+
+>> Cas9_Kkingae.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -4.1   0.1       8.5        27      11     147 ..      75      91 ..      65      96 .. 0.52
+   2 !   58.6   0.7   4.3e-19   1.4e-18      37     154 ..     543     662 ..     509     665 .. 0.70
+
+  Alignments for each domain:
+  == domain 1  score: -4.1 bits;  conditional E-value: 8.5
+             IPR033114  11 RlkklekalkelgskilkeevrdllkeevdnselrkdrlyLYylqnGkdmYtgekldidklskYdiDHiiPqsfikddSldNrVLvssk 99 
+                           R+                                                                                       
+  Cas9_Kkingae.fasta_1  75 RM--------------------------------------------------------------------------------------- 76 
+                           33....................................................................................... PP
+
+             IPR033114 100 kNrkKsdkvpseevvkkmkefWkkllkakliskrKfdnLtkaegelte 147
+                                                            +K+ +L+k+e+ l++
+  Cas9_Kkingae.fasta_1  77 ---------------------------------NKLRRLLKQENVLQA 91 
+                           .................................355555555555544 PP
+
+  == domain 2  score: 58.6 bits;  conditional E-value: 4.3e-19
+             IPR033114  37 eevdnselrkdrlyLYylqnGkdmYtgekldidkl..skY.diDHiiPqsfikddSldNrVLvsskkNrkKsdkvpseevv.kkmkefW 121
+                              + +++   +l LY lq+Gk++Y+g ++d+ +l  + Y +iDH +P s + ddS +N++Lv  ++N++K ++ p+e ++    +e W
+  Cas9_Kkingae.fasta_1 543 AAHEPKAVDILKLRLYQLQQGKCLYSGLPIDVRRLpeKGYvEIDHALPFSRTWDDSFNNKILVLASENQNKGNQTPYEYLRgADNSESW 631
+                           34444555566889*********************9866669************************************99876778888 PP
+
+             IPR033114 122 kkllkakliskrKfdnLtkaegeltekekagFi 154
+                           + + ++  + + +f+  +k++   ++ +++gF+
+  Cas9_Kkingae.fasta_1 632 RLFVEN--VQNCQFSPNKKQKIMAKQLDEKGFL 662
+                           766554..3344444444444333444555555 PP
+
+>> Cas9_Cindologenes.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -2.5   0.6       2.8         9     115     125 ..     260     270 ..     198     300 .. 0.49
+   2 !   55.3   2.8   4.7e-18   1.5e-17      21     114 ..     751     851 ..     727     894 .. 0.75
+
+  Alignments for each domain:
+  == domain 1  score: -2.5 bits;  conditional E-value: 2.8
+                  IPR033114 115 kkmkefWkkll 125
+                                kkm+++ k+l 
+  Cas9_Cindologenes.fasta_1 260 KKMENIEKQLA 270
+                                23333322222 PP
+
+  == domain 2  score: 55.3 bits;  conditional E-value: 4.7e-18
+                  IPR033114  21 elgs...kilkeevrdll.keevdnselrkdrlyLYylqnGkdmYtgekldidkl...skYdiDHiiPqsfikddSldNrVLvs 97 
+                                ++++    + +e+++++  k+  d s+ + ++l L+  q     Ytg+++ +++l   ++Yd+DHiiPqs   ddSl N+V+++
+  Cas9_Cindologenes.fasta_1 751 NIEKyklWVSQENLQEVYlKNYNDPSKSEIEKLKLWESQGHVSPYTGQPIPLSELfnrERYDVDHIIPQSRYFDDSLSNKVICE 834
+                                333333356677777766255555678899**************************999************************* PP
+
+                  IPR033114  98 skkNrkKsdkvpseevv 114
+                                +++N++K +   +e + 
+  Cas9_Cindologenes.fasta_1 835 KSINNEKGNRTSMEYFE 851
+                                *********99888665 PP
+
+>> Cas9_Movipneumoniae.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   53.5  13.7   1.7e-17   5.3e-17       8     135 ..     596     724 ..     566     740 .. 0.73
+   2 ?   -3.3   0.1       4.9        16      36      51 ..     860     875 ..     821     911 .. 0.48
+   3 ?   -3.1   0.1       4.2        14      12      50 ..     908     944 ..     897     955 .. 0.64
+   4 ?   -3.4   0.2       5.1        17      14      52 ..    1070    1110 ..    1065    1124 .. 0.67
+
+  Alignments for each domain:
+  == domain 1  score: 53.5 bits;  conditional E-value: 1.7e-17
+                    IPR033114   8 seqRlkklekalkelgskilkeevrdllkeevdnselrkdrlyLYylqnGkdmYtgekldidkl....skYdiDHiiPqsfi 85 
+                                  ++++ k+lek++k l+     e+ r++l +  ++     d+l LY+ q G  +Yt ek+ id+l    +kY+iDHiiP s+ 
+  Cas9_Movipneumoniae.fasta_1 596 KNSKGKNLEKLFKILN----LENSRYKLSDLETKPGKLLDKLRLYHQQDGINLYTLEKIVIDDLinnsQKYEIDHIIPYSMS 673
+                                  2222333333333322....223345554444444555699*************************999************* PP
+
+                    IPR033114  86 kddSldNrVLvsskkNrkKsdkvpseevvkkmkefWkkllka.kliskrKf 135
+                                   d+S  N++L+++++N kK + ++se +++k  ef++k +++ k + ++K 
+  Cas9_Movipneumoniae.fasta_1 674 YDNSQANKILTTKAENLKKGKLIASEYIKTKGDEFYNKYYEKaKELFNKKN 724
+                                  ************************************998765144444443 PP
+
+  == domain 2  score: -3.3 bits;  conditional E-value: 4.9
+                    IPR033114  36 keevdnselrkdrlyL 51 
+                                   + ++ ++ ++d++++
+  Cas9_Movipneumoniae.fasta_1 860 ANLLTLADNKNDKKFI 875
+                                  2223333344444444 PP
+
+  == domain 3  score: -3.1 bits;  conditional E-value: 4.2
+                    IPR033114  12 lkklekalkelgskilkeevrdllkeevdnselrkdrly 50 
+                                   k +++ ++e++++i   ++++++ ++++n  l+++ ly
+  Cas9_Movipneumoniae.fasta_1 908 EKIIQEKYEEAKNHIPI-KFSRKI-RNITNGGLSDETLY 944
+                                  45667777777665433.355555.67777778777777 PP
+
+  == domain 4  score: -3.4 bits;  conditional E-value: 5.1
+                    IPR033114   14 klekalkelgs.kilkeevrdllkeevdnselrkdrly.LY 52  
+                                   +++  +k+++  +  +  ++ +++++ d  +  kd+l+ LY
+  Cas9_Movipneumoniae.fasta_1 1070 SFKRFYKNIKIiEYKSIPIKFKIVSKHDGGKSFKDKLFsLY 1110
+                                   45556666654322333467778999999999999999444 PP
+
+>> Cas9_Hpullorum_2.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   49.5   0.1   2.7e-16   8.7e-16      13     125 ..     196     305 ..     184     332 .. 0.73
+   2 ?   -2.0   0.0         2       6.5      88     122 ..     362     396 ..     358     402 .. 0.85
+
+  Alignments for each domain:
+  == domain 1  score: 49.5 bits;  conditional E-value: 2.7e-16
+                 IPR033114  13 kklekalkelgskilkeevrdllkeevdnselrkdrlyLYylqnGkdmYtgekldidkl...skYdiDHiiPqsfikddSldNrV 94 
+                               k++e+++k+  +  ++e   ++l  ++++ ++   +l L+  qn  ++Y+g k+ +++l    + +iDHi+P s   ddS  N+V
+  Cas9_Hpullorum_2.fasta_1 196 KEIESNYKARVQA-MQE--CEKLGLTLSEGNIL--KLRLFREQNEICVYSGRKITLANLkeqGALEIDHILPYSRSSDDSYMNKV 275
+                               4444444444332.233..33343444444444..4557789*****************766678******************** PP
+
+                 IPR033114  95 LvsskkNrkKsdkvpseevvkkmkefWkkll 125
+                               Lv  ++N++K +k p+e++    ++ W +++
+  Cas9_Hpullorum_2.fasta_1 276 LVFTNENQNKGNKTPYEAFGGD-SQKWGEIE 305
+                               *****************88744.34465555 PP
+
+  == domain 2  score: -2.0 bits;  conditional E-value: 2
+                 IPR033114  88 dSldNrVLvsskkNrkKsdkvpseevvkkmkefWk 122
+                               dS +N+ L++ +k  k + +  +  ++ +m++fW 
+  Cas9_Hpullorum_2.fasta_1 362 DSHENTALIAGEKDSKIHVEAVKGMLTATMRHFWG 396
+                               89999999999999998888888889999999995 PP
+
+>> Cas9_Smoniliformis.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -1.6   6.1       1.5       4.9      36     142 ..     238     358 ..     204     380 .. 0.63
+   2 !   49.5   5.6   2.8e-16   8.9e-16      33     147 ..     597     715 ..     566     721 .. 0.74
+
+  Alignments for each domain:
+  == domain 1  score: -1.6 bits;  conditional E-value: 1.5
+                   IPR033114  36 keevdnselrkdrlyLYylq.nGkdmYtgekldidklskYdi.......DHiiPqsfikddSldNrVLvsskkNr......kK 104
+                                 +++ ++    + ++ + y++  Gk+ Ytge   +++  +Y+i         i    f+ +d ++ + L ++ + +      +K
+  Cas9_Smoniliformis.fasta_1 238 QRDFSDGPGGDSKYKIDYTKlAGKCKYTGEVRAVKSAPSYEIftmlqklNDIRYVKFTSEDKIEKKKLSKEVIHKlydlvvEK 320
+                                 34444444445555555554279*******99999999999832222223444457888888988888887665433333377 PP
+
+                   IPR033114 105 sdkvpseevvkkmkefWkkllkakliskrKfdnLtkae 142
+                                 ++ +++  + k++ e   kll+   +sk K+ +L+k+ 
+  Cas9_Smoniliformis.fasta_1 321 NKTLTYDLIEKSIDEENIKLLNIPKLSKSKYVELRKSY 358
+                                 77777777778888888888888888888888888764 PP
+
+  == domain 2  score: 49.5 bits;  conditional E-value: 2.8e-16
+                   IPR033114  33 dll..keevdnselrkdrlyLYylqnGkdmYtgekldidkl..skYdiDHiiPqsfikddSldNrVLvsskkNrkKsdkvpse 111
+                                 d +  k++++n ++ +  + L+  qn  +mY+g +++  +l   + +iDHi+P s+  d+S  N+VLv s++N++K++  p++
+  Cas9_Smoniliformis.fasta_1 597 DIVagKDRLSNDDFVR--IKLWEEQNKVCMYSGRTIEKYQLtsAEVQIDHILPYSKSFDNSYSNKVLVFSNENQDKKERTPYQ 677
+                                 3334456666666654..446789*****************88789************************************9 PP
+
+                   IPR033114 112 evv..kkmkefWkkllkakliskrKfdnLtkaegelte 147
+                                  ++  +k +ef ++++ +  is++K +nL+ +++ +++
+  Cas9_Smoniliformis.fasta_1 678 WLKgtEKWNEFKQRVRLNLNISNKKKENLLFEDEVVNN 715
+                                 77665677777777777788*********998855444 PP
+
+>> Cas9_Ranatipestifer.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.4   0.1       5.4        17      98     116 ..     239     257 ..     237     267 .. 0.74
+   2 !   45.7   2.3   4.1e-15   1.3e-14       7     156 ..     716     876 ..     711     877 .. 0.71
+   3 ?   -3.7   0.4       6.6        21     119     150 ..     981    1012 ..     957    1019 .. 0.52
+
+  Alignments for each domain:
+  == domain 1  score: -3.4 bits;  conditional E-value: 5.4
+                    IPR033114  98 skkNrkKsdkvpseevvkk 116
+                                   ++N++K d+v+ ++++ +
+  Cas9_Ranatipestifer.fasta_1 239 TAENKGKRDDVKLRHYKWR 257
+                                  579*******999877644 PP
+
+  == domain 2  score: 45.7 bits;  conditional E-value: 4.1e-15
+                    IPR033114   7 kseqRlkklekalkelgskilkeevrdll.....keevdnselrkdrlyLYylq.nGkdmYtgekldidkl..skYdiDHii 80 
+                                  ks +++ +++k+++e++++  +e++++l+     + + ++s++ + rl+        kd++tg+++  ++l  sk di+Hii
+  Cas9_Ranatipestifer.fasta_1 716 KSAEKRAEMTKSINEATRR--NEDIKKLItkdfgIPNPTKSDVVRYRLWEELAPlAYKDVFTGKQIKKEDLfsSKIDIEHII 795
+                                  4555556666666666653..3333444422224455555566666666444431359************************ PP
+
+                    IPR033114  81 PqsfikddSldNrVLvsskkNrkKsdkvpseevv...........kkmkefWkkllkakliskrKfdnLtkaegeltekeka 151
+                                  P++++ ddS  N+ Lv +++N kK d  ++  +            +++++++++  +++ isk K ++L++a+++l     +
+  Cas9_Ranatipestifer.fasta_1 796 PKALLFDDSFSNKTLVFRETNLKKADRTAYDFIEsdynatlddyiQRVETLYNN--TKGTISKGKRNKLLMAQKNLP----D 871
+                                  **************************9999877788887776655555555543..5799*********99995554....4 PP
+
+                    IPR033114 152 gFikr 156
+                                  gFi+r
+  Cas9_Ranatipestifer.fasta_1 872 GFIER 876
+                                  55555 PP
+
+  == domain 3  score: -3.7 bits;  conditional E-value: 6.6
+                    IPR033114  119 efWkkllkakliskrKfdnLtkaegeltekek 150 
+                                   ++ + l+ +k  s++ ++n++  e+++t+k+k
+  Cas9_Ranatipestifer.fasta_1  981 QYLNYLNARKNESHKEHKNIKGIENKITHKQK 1012
+                                   45555555555566666666665555554332 PP
+
+>> Cas9_Cochracea.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -1.4   0.2       1.3       4.2       5      47 ..     243     283 ..     239     302 .. 0.71
+   2 ?   -3.4   0.0       5.2        17      66     102 ..     508     545 ..     502     556 .. 0.75
+   3 !   42.5   7.2     4e-14   1.3e-13       4     152 ..     733     890 ..     730     895 .. 0.81
+
+  Alignments for each domain:
+  == domain 1  score: -1.4 bits;  conditional E-value: 1.3
+               IPR033114   5 kkkseqRlkklekalkelgskilkeevrdllkeevdnselrkd 47 
+                              +k++ Rl+  +   +++++++ keev ++l+e   n++l++ 
+  Cas9_Cochracea.fasta_1 243 GSKESVRLQAYQWRAEAISKQLSKEEVAYVLTEI--NNNLNNA 283
+                             4567788889999999999999999888777443..3334444 PP
+
+  == domain 2  score: -3.4 bits;  conditional E-value: 5.2
+               IPR033114  66 ldidklskYdiDHiiPqsfikdd.SldNrVLvsskkNr 102
+                             l i ++++ d+  i+     kdd Sld   L +s++ +
+  Cas9_Cochracea.fasta_1 508 LKIVEMEAHDVKDILQIKSAKDDwSLDESPLSASEIRE 545
+                             77888899999999876666666599999888877654 PP
+
+  == domain 3  score: 42.5 bits;  conditional E-value: 4e-14
+               IPR033114   4 kkkkseqRlkklekalkelgs.kilkeevrdll.keevdnselrkdrlyLYylqnG.kdmYtgekldidkl..skYdiDHiiPqsfi 85 
+                              kk++++R++  +++ k+  + + ++e ++++  +++ ++s++ + rly     nG k +Yt +++  d l  ++ +i+Hi+P++ +
+  Cas9_Cochracea.fasta_1 733 LKKNAQKRYEMTQNINKAKLEhQKISEILQKEFgIKNPTKSDIIRYRLYQELEHNGyKELYTNAPIARDMLfsKNIEIEHIVPKARV 819
+                             4677888887666665543224777777787778999999***************9889*************999************ PP
+
+               IPR033114  86 kddSldNrVLvsskkNrkKsdkvpseevv........kkmkefWkkllkakliskrKfdnLtkaegeltekekag 152
+                              ddS  N+ L+ +++N +K +  +   ++        ++  +  ++ +k+k is  K++nL+k+  e+ +    +
+  Cas9_Cochracea.fasta_1 820 FDDSFSNKTLTFHRINSDKGEYTAFDYITslnseeelNQYLTRVENAYKTKSISPTKYKNLLKKASEIGD----D 890
+                             *******************9987777776887775554555556677899*************9865544....4 PP
+
+>> Cas9_Spaucimobilis.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   40.5   0.0   1.6e-13   5.3e-13      58     112 ..     593     649 ..     540     664 .. 0.89
+
+  Alignments for each domain:
+  == domain 1  score: 40.5 bits;  conditional E-value: 1.6e-13
+                   IPR033114  58 kdmYtgekldidkl..skYdiDHiiPqsfikddSldNrVLvsskkNrkKsdkvpsee 112
+                                 +++Ytge+++id l  ++ ++DHi+P + + ddS  N+ L+ +++Nr+K    p+e+
+  Cas9_Spaucimobilis.fasta_1 593 RCIYTGEQISIDMLfsDRVEVDHILPFAQTLDDSNGNKLLCLREANREKRRRSPYEA 649
+                                 8*************98899******************************99998885 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (157 nodes)
+Target sequences:                           42  (28002 residues searched)
+Passed MSV filter:                        16  (0.380952); expected 0.8 (0.02)
+Passed bias filter:                       15  (0.357143); expected 0.8 (0.02)
+Passed Vit filter:                        13  (0.309524); expected 0.0 (0.001)
+Passed Fwd filter:                        13  (0.309524); expected 0.0 (1e-05)
+Initial search space (Z):                 42  [actual number of targets]
+Domain search space  (domZ):              13  [number of targets reported over threshold]
+# CPU time: 0.03u 0.00s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 146.54
+//
+[ok]

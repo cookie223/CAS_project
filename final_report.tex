@@ -99,7 +99,14 @@ Naturally in bacteria or archaea, CRISPR proteins have distinct roles in the thr
 \end{figure}
 
 \subsection{Past Approaches}
-\TODO{Qi : summarize the HMMer approach?}
+Functionally related regions can be clustered by evidences in experimental data. As summarized in Figure. \ref{buildingBlocks}. Previous work has found conserved regions on the sequence level  using sequence alignment and structural information\cite{preWork} inside each sub-type of the \textit{Cas} system but not across the whole \textit{Cas} family.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.35]{images/buildingBlocks}
+      \caption{Conserved building blocks of \textit{Cas} family proteins \cite{buildingBlocks}}
+      \label{buildingBlocks}
+\end{figure}
 
 \subsection{Approaches in This Paper}
 \TODO{everyone?}
@@ -125,7 +132,7 @@ Protein sequences were used (as opposed to DNA), to uncover preservation of \tex
 
 \subsection{Data Retrieval}
 
-\TODO{Qi : talk about source of data}
+Gene sequences for \textit{Cas} family including \textit{Cas1} through \textit{Cas10} were searched and downloaded from NCBI. For each gene, a variety of species were selected to have all the sequences of the proteins in the \textit{Cas} system of one species and also maintain a certain level of variety. The selection is also subject to the availability in NCBI. For domain-specific profile HMM, domain markers were fectched from EMBL-EBI (http://www.ebi.ac.uk). 
 
 \subsection{Sequence Alignment using Dynamic Programming} \label{dpProtocol}
 
@@ -382,23 +389,48 @@ l
 
 
 
-\subsection{HMM}
+\subsection{Domain-specific profile HMM}
+
+\subsubsection{Protocol testing}
+
+For method quality control purpose, some protocol was applied to globins4.fasta (a file of 4 sequences of globins generated from a tutorial file of HMMer). We built the profile Hmm and save it in golbins4.hmm. Using this profile HMM, we searched globins45.fa (a tutorial file of HMMer) and the result is saved into golbins.search. The summary of found domains is in the header part of the file as shown in Figure. \ref{hmm_test1}.  An example alignment of the found domain is shown in Figure. \ref{hmm_test2}. We can see that a domain is found in HBB\_MANSP. The profile HMM model can also be read from the alignment. Full result is available in golbins.search file.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.35]{images/hmm_test1}
+      \caption{profile HMM search results summary in globins.search}
+      \label{hmm_test1}
+\end{figure} 
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.3]{images/hmm_test2}
+      \caption{profile HMM domain alignment in globins.search}
+      \label{hmm_test2}
+\end{figure} 
 
 
-f
+\subsubsection{Finding domains of \textit{Cas9}}
 
-i
+After subtracting and aligning all the shared domains of \textit{Cas9} marked in EMBL-EBI. We built profile HMMs from these multi-sequence alignments and save them into data/domains\_Cas9/IPR032239.hmm, etc. Then we use these models to find the domains of \textit{Cas9} in all \textit{Cas} family protein sequences, hoping to find similar domains in other proteins in different subtypes. The summary of one of the search results can be seen in Figure. \ref{Cas9}. The profile HMM can find similar domains in other \textit{Cas9} proteins, which is as expected. But all the models failed to find any similar domains in other \textit{Cas} family proteins other than \textit{Cas9}.
 
-l
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.3]{images/cas9Domain}
+      \caption{One example result for searching for \textit{Cas9} in all \textit{Cas} family proteins}
+      \label{Cas9}
+\end{figure} 
 
-l
+\subsection{Finding domains of \textit{Cas5}}
 
-.
+We also tried the other direction. That is to use domain markers of \textit{Cas5}, which is a component of Type I system, and to find similar domains in \textit{Cas9}. The protocol is the same and one of the summaries of the results can be found in Figure \ref{Cas5}. The result is similar, the model is able to find some similar domains in other \textit{Cas5} proteins but not other \textit{Cas} family proteins.
 
-.
-
-.
-
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale = 0.3]{images/cas5Domain}
+      \caption{One example result for searching for \textit{Cas9} in all \textit{Cas} family proteins}
+      \label{Cas5}
+\end{figure} 
 
 \section{Conclusion}
 

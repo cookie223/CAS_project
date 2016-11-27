@@ -1,0 +1,226 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  IPR032237.hmm
+# target sequence database:        ../../../genes/complete_amino_acids.fa
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       IPR032237  [M=260]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence                    Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                    -----------
+    2.5e-79  258.3   1.3    2.5e-79  258.3   1.3    4.5  6  Cas9_Sgallolyticus.fasta_1   
+    5.4e-55  178.5   4.4    5.4e-55  178.5   4.4    3.5  4  Cas9_Pacidlactici.fasta_1    
+    8.9e-33  105.7   8.0    8.9e-33  105.7   8.0    4.5  5  Cas9_Bthermosphacta.fasta_1  
+
+
+Domain annotation for each sequence (and alignments):
+>> Cas9_Sgallolyticus.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -1.6   0.4      0.35       4.9     148     225 ..     175     252 ..     153     280 .. 0.58
+   2 ?   -2.5   0.2      0.66       9.3     152     152 ..     329     329 ..     255     382 .. 0.57
+   3 ?    0.6   6.6     0.074         1      77     245 ..     431     625 ..     413     637 .. 0.50
+   4 ?   -4.3   0.3       2.4        33     173     206 ..     779     811 ..     763     826 .. 0.61
+   5 ?   -0.4   0.1      0.16       2.2      89     156 ..    1010    1075 ..     961    1102 .. 0.65
+   6 !  258.3   1.3   1.8e-80   2.5e-79       1     260 []    1107    1360 ..    1107    1360 .. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: -1.6 bits;  conditional E-value: 0.35
+                   IPR032237 148 yveehkalfelldeilefadkyvlakknlekikelleknekrekleelkesFiel.seeekkrvlkeileltangatad 225
+                                 + +e+    +l++ ++e  d+++  ++ +e+  ++ +   ++ + +   e++i+  ++e+k+++  +++ l a+g + +
+  Cas9_Sgallolyticus.fasta_1 175 LNAENTDVQKLFEAFVEVYDRTFDDSNLSEITVDASSILTEKFSKSRRLENLIKHyPTEKKNTLFGNLVAL-ALGLQPN 252
+                                 44556666688888888888855555555555566555544444445555555540555555555555544.3444444 PP
+
+  == domain 2  score: -2.5 bits;  conditional E-value: 0.66
+                   IPR032237 152 h 152
+                                 h
+  Cas9_Sgallolyticus.fasta_1 329 H 329
+                                 1 PP
+
+  == domain 3  score: 0.6 bits;  conditional E-value: 0.074
+                   IPR032237  77 kkyLkekgykkikvliklikysllel.engrrrmlaSa........................telqkanqlvlsnkev....k 130
+                                  ++Lke   k  k+l+ +i+y +  l   ++r+ +a                             +  n+l+l+++ v     
+  Cas9_Sgallolyticus.fasta_1 431 YAFLKENQAKIEKILTFRIPYYVGPLaRKNSRFAWAEYhsdekitpwnfdeiidkeksaekfITRMTLNDLYLPEEKVlpkhS 513
+                                 55566544444455555555544333033455666221233333333333333333333333334444555555544322223 PP
+
+                   IPR032237 131 llkkaksiektieehksyveehkalf...elldeilefadkyvlakknlekikelleknekrekleelkesFielseeekkrv 210
+                                 l+++ +++ ++  + k + e+ k  f   ++ +ei e + k     +n +  k+ + +  ++e  e   + +i l  +e+k+ 
+  Cas9_Sgallolyticus.fasta_1 514 LVYETYTVYNELTKVKYVNEQGKSNFfdaNMKQEIFEHVFK-----ENRKVTKDKFLNYLNKEFPEYRIQDLIGL-DKENKSF 590
+                                 44444444443333222222223322222233344444443.....44444444444443555556666777777.4568888 PP
+
+                   IPR032237 211 lkeileltangatadlkflggklgttikrkritss 245
+                                 +  + +++++++  d +fl+ k++ ti ++ i+++
+  Cas9_Sgallolyticus.fasta_1 591 NASLGTYHDLKKILDKSFLDDKTNETIIEDIIQTL 625
+                                 888888***************98888887777665 PP
+
+  == domain 4  score: -4.3 bits;  conditional E-value: 2.4
+                   IPR032237 173 kknlekikelleknekrekleelkesFielseee 206
+                                 +++l+k ++ l++   +++l+e+k s+ie ++e+
+  Cas9_Sgallolyticus.fasta_1 779 QQRLKKLQDSLKEL-GSNILNEEKPSYIEGKVEN 811
+                                 34455555555555.3555556555555555544 PP
+
+  == domain 5  score: -0.4 bits;  conditional E-value: 0.16
+                   IPR032237   89 kvliklikysllelengrrrmlaSatelqkanqlvlsnkevkllkkaksiektieehksyveehkalf 156 
+                                    l +   y  +++++ r  ++ S++ ++ a+ ++ sn +++++k+++++++ +   + ++e  k + 
+  Cas9_Sgallolyticus.fasta_1 1010 PKLAPEFVYGEYKKYDIR-KFITSSGDKATAKYFFYSN-LMNFFKRVIRYSNGKVVVRPVIECSKDTG 1075
+                                  445555556666666655.5666999999999999986.89999999999886553344444444444 PP
+
+  == domain 6  score: 258.3 bits;  conditional E-value: 1.8e-80
+                   IPR032237    1 kGglfdqtiypkgkekksskliprKk...nldtkkYGGYsgptsaYavlveaekeKgkk.....vkelvgipilekkklke 73  
+                                  +Gg+++++i pkg+   s+kliprK+    +dt kYGG+++p+ aY+v+v a++eKgk+     vkelvgi+i+e++++ e
+  Cas9_Sgallolyticus.fasta_1 1107 TGGFSKESILPKGN---SDKLIPRKTkkfRWDTPKYGGFDSPNIAYSVFVIADVEKGKAkklktVKELVGISIMERSSF-E 1183
+                                  69***********9...*********9999***************************9999******************.* PP
+
+                   IPR032237   74 kdskkyLkekgykki..kvliklikysllelengrrrmlaSatelqkanqlvlsnkevkllkkaksiektie.ehksyvee 151 
+                                  ++++ +L++kgy+++  ++likl+kysl+e+e+grrr+laSa+elqk+n+ vls ++v+ll++a++++++++ eh +yv+e
+  Cas9_Sgallolyticus.fasta_1 1184 ENPVVFLEKKGYQNVqeDNLIKLPKYSLFEFEGGRRRLLASASELQKGNEVVLSRHLVELLYHAHRVNSFNNsEHLKYVSE 1264
+                                  ***************999****************************************************999******** PP
+
+                   IPR032237  152 hkalf.elldeilefadkyvlakknlekikelleknekrekleelkesFielseeekkrvlkeileltangatadlkflgg 231 
+                                  hk++f e+l+ + +fa+ yv ++knl ki+ + +k  ++ ++e++  sF++l            l+lta+ga+ad++f   
+  Cas9_Sgallolyticus.fasta_1 1265 HKKEFgEVLSCVENFAKSYVDVEKNLGKIRAVADKI-DTFSIEDISISFVNL------------LTLTALGAPADFNF--- 1329
+                                  ***********************************9.9**************............**************... PP
+
+                   IPR032237  232 klgttikrkritssk...natLIhqSiTGLyE 260 
+                                   lg +i+rkr+ts+k   natLIhqSiTGLyE
+  Cas9_Sgallolyticus.fasta_1 1330 -LGEKIPRKRYTSTKeclNATLIHQSITGLYE 1360
+                                  .9*****************************9 PP
+
+>> Cas9_Pacidlactici.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -5.5   5.4         3        42     146     174 ..     324     352 ..     205     408 .. 0.58
+   2 ?   -1.4   0.1      0.31       4.3     168     206 ..     551     588 ..     526     626 .. 0.70
+   3 ?   -2.8   0.2      0.84        12     186     186 ..     978     978 ..     908    1067 .. 0.52
+   4 !  178.5   4.4   3.9e-56   5.4e-55       3     260 .]    1087    1356 ..    1085    1356 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: -5.5 bits;  conditional E-value: 3
+                  IPR032237 146 ksyveehkalfelldeilefadkyvlakk 174
+                                 +  e+h + + ll+++ e       ak+
+  Cas9_Pacidlactici.fasta_1 324 VEKYENHHHHLGLLKKVIENHPDAKKAKA 352
+                                22233344444444444444444333333 PP
+
+  == domain 2  score: -1.4 bits;  conditional E-value: 0.31
+                  IPR032237 168 kyvlakknlekikelleknekrekleelkesFielseee 206
+                                ++   k++ + +++l++++ k+ ++++l++ ++  ++  
+  Cas9_Pacidlactici.fasta_1 551 RHLSLKDKQDVYNDLFKQQ-KTVSIKALQNYYVTKKKAA 588
+                                4455677788899999998.7888888888887775444 PP
+
+  == domain 3  score: -2.8 bits;  conditional E-value: 0.84
+                  IPR032237 186 n 186
+                                 
+  Cas9_Pacidlactici.fasta_1 978 V 978
+                                2 PP
+
+  == domain 4  score: 178.5 bits;  conditional E-value: 3.9e-56
+                  IPR032237    3 glfdqtiypkgkekksskliprKknldtkkYGGYsgptsaYavlveaekeKgkkvkelvgipilekkkl.k..ekdskkyL. 80  
+                                 +lf+qt+ypk+      klip+K++++t +YGGYsg+t+aY ++v  e +K+ k  ++vgip++  +kl k  ++ds++yL 
+  Cas9_Pacidlactici.fasta_1 1087 ELFNQTVYPKNY---HGKLIPIKEDRPTDLYGGYSGNTDAYLAIVALEDKKKGKYFKVVGIPTRVAAKLeKlkQQDSQQYLq 1165
+                                 79********98...9********************************9999899*********99999878799*****88 PP
+
+                  IPR032237   81 .............kekgykki..kvliklikysllelengrrrmlaSatelqkanqlvlsnkevkllkkaksiektieehks 147 
+                                              ++kg+kk   ++++++++y++l+ ++  ++ml+S+t++++a+qlvls+k ++++ ++ ++++t      
+  Cas9_Pacidlactici.fasta_1 1166 alhkviapqftksTKKGIKKTefEIVLDKVHYRQLVQDGPVKMMLGSSTYKYNAKQLVLSEKALQVIADDRKFDET------ 1241
+                                 88999999999984466665544*************************************************9885...... PP
+
+                  IPR032237  148 yveehkalfelldeilefadkyvlakknlekikelleknekrekleelkesFielseee...........kkrvlkeile.l 217 
+                                   +++ +l+ ++deil+ +++          +++l++ n++r+kl++ +++Fi+l++e            k+++++eil+ l
+  Cas9_Pacidlactici.fasta_1 1242 --QKDDNLIAVYDEILSIVNQ----------SFDLYDINGFRKKLNDNRDQFIDLPAETkyegrkvvahgKREMILEILKgL 1311
+                                 ..3567889***********9..........*************************999*********************** PP
+
+                  IPR032237  218 tangatadlkflggk..lgttikrkritssknatLIhqSiTGLyE 260 
+                                 +an+a  +lk +g +  +g  +  ++i  skna+LIhqS++GL+E
+  Cas9_Pacidlactici.fasta_1 1312 HANAAFGNLKPIGFStaFGQLQVPNGIILSKNAILIHQSPSGLFE 1356
+                                 ********************************************9 PP
+
+>> Cas9_Bthermosphacta.fasta_1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.2   0.1       1.1        15      91     143 ..      25      80 ..      15     131 .. 0.53
+   2 ?   -2.0   2.7      0.45       6.4      43     141 ..     275     382 ..     247     514 .. 0.65
+   3 ?   -0.8   2.3       0.2       2.8     151     231 ..     590     706 ..     530     733 .. 0.77
+   4 ?   -1.1   5.7      0.26       3.6     144     232 ..     824     929 ..     737     953 .. 0.72
+   5 !  105.7   8.0   6.4e-34   8.9e-33       2     259 ..    1049    1292 ..    1048    1293 .. 0.85
+
+  Alignments for each domain:
+  == domain 1  score: -3.2 bits;  conditional E-value: 1.1
+                    IPR032237  91 liklikyslleleng.rrrmlaSa..telqkanqlvl.snkevkllkkaksiektie 143
+                                   +++ k++l +le+  ++ +l S+  + + + ++ +l +++e k +k ++ +++++ 
+  Cas9_Bthermosphacta.fasta_1  25 RLNHRKFRLRLLEDMfEKEIL-SKdpSFFIRLKEAFLsPKDEQKQFKGNILFNDKDY 80 
+                                  555555555555555333333.44443333333333313444455554444444333 PP
+
+  == domain 2  score: -2.0 bits;  conditional E-value: 0.45
+                    IPR032237  43 YavlveaekeKgkk.vkelvgipilekkkl.kekdskky.......L..kekgykkikvliklikysllelengrrrmlaSa 113
+                                  Y  + ea+ke   k  +elv +  + k++   +++ +k+       +  k+  y++ k++ k       + + ++r +    
+  Cas9_Bthermosphacta.fasta_1 275 YEYFAEAKKESYRKhQEELVLVKKMLKSNAiTNDERAKFeyfytdyIgaKSSNYEESKNIKKGLSAAYGKYSKEERLF--KH 354
+                                  444555555443334566666654444443333334443334333314355666666666555443333333333222..35 PP
+
+                    IPR032237 114 telqkanqlvlsnkevkllkkaksiekt 141
+                                   el  a++ vl++ e +ll+k++++ + 
+  Cas9_Bthermosphacta.fasta_1 355 IELLLAKENVLTTVEHALLEKNITFASL 382
+                                  6666677777777777777777666554 PP
+
+  == domain 3  score: -0.8 bits;  conditional E-value: 0.2
+                    IPR032237 151 ehkalf.elldeilefadkyvlakknlekikellekne...................................krekleelk 196
+                                   ++++f +++   + f+dk     ++l+ + +l e+++                                    +e+l +  
+  Cas9_Bthermosphacta.fasta_1 590 ANEEMFeKIIYWSTVFEDK-KIMRRKLSEYPQLTEQQQvqlaqvrfrgwgrlsqrlinriktpvsgdedhklsINEILWQTN 670
+                                  3556666666666678888.77788889999999998899999999999999999999999999999998888889999999 PP
+
+                    IPR032237 197 esFielseeekkrvlkeile..ltangatadlkflgg 231
+                                  e+F+++   +k ++ k+i+e  +++ +a  + + ++ 
+  Cas9_Bthermosphacta.fasta_1 671 ENFMQI-IRNKDYLFKKIIEeqFENETALLNKQRIDE 706
+                                  999999.679999999999878888888777777665 PP
+
+  == domain 4  score: -1.1 bits;  conditional E-value: 0.26
+                    IPR032237 144 ehksyveehkalf.elldeilefadkyvlakknlekikellekne.................krekleelkesFielseeek 207
+                                    +sy++++  ++  l++++ +  +k      n+++i++ ++ +e                 ++++ +  ke Fi+ +  e 
+  Cas9_Bthermosphacta.fasta_1 824 LPQSYIKDNSIENlALVKKVENQRKK-DSLLLNSSIINQNYSRWEqlknagligekkfrnltRTKITDRDKEGFIARQLVET 904
+                                  33577777777776777777666666.6666777888888888887777777777777777455555667889999999999 PP
+
+                    IPR032237 208 krvlkeileltangatadlkflggk 232
+                                  +++ k++ +l +++     k++ +k
+  Cas9_Bthermosphacta.fasta_1 905 RQITKHVTQLLQQEYKDTTKVFAIK 929
+                                  9999999998877777777776666 PP
+
+  == domain 5  score: 105.7 bits;  conditional E-value: 6.4e-34
+                    IPR032237    2 GglfdqtiypkgkekksskliprKknldtkkYGGYsgptsaYavlveaekeKgkkvkelvgipilekkkl.k.ekdskky 79  
+                                   G+lf++tiyp ++  +ssk ip+Kk ldt++YGGY  ++ a ++l++ +k ++  ++e++gip++ + ++ + e   ++y
+  Cas9_Bthermosphacta.fasta_1 1049 GALFKETIYPVEE--SSSKTIPLKKHLDTAIYGGYTAVNYASYALIQFKKGRKL-KREIIGIPLAVQTRIdNsETSLQAY 1125
+                                   9**********87..********************************9985444.6**************98999***** PP
+
+                    IPR032237   80 LkekgykkikvliklikysllelengrrrmlaSatelqkanqlvlsnkevkllkkaksiektieehksyveehkalfell 159 
+                                   + e+   ++++l  +i   +l+ +ng+r ++a  +e ++a+ql++s++  k++  + + + +++ + +y    ++l  ++
+  Cas9_Bthermosphacta.fasta_1 1126 IAEQIKSEVEILNGRILKYQLISNNGNRLYIAGPSERHNARQLIVSDEAAKVIWLISTKQADEAMFLKYYR-LEHLEAVF 1204
+                                   **************99888999*******************************999998887776666666.22333566 PP
+
+                    IPR032237  160 deilefadkyvlakknlekikelleknekrekleelkesFielseeekkrvlkeile.ltangatadlkflggklgttik 238 
+                                   +e+  ++             ++++ek    +k+e  k  F   + +ek +v+ e+l+  +an+++ dlk+l++       
+  Cas9_Bthermosphacta.fasta_1 1205 EELIRKQAA----------DYQIFEKL--IKKIEVNKVYFYSCTYNEKVKVIEELLKiTQANATNGDLKLLKM----SNR 1268
+                                   666444444..........34555554..677899999*******************88999999*****666....444 PP
+
+                    IPR032237  239 rkritssk...natLIhqSiTGLy 259 
+                                   + r  s +   + ++I+qS+TGLy
+  Cas9_Bthermosphacta.fasta_1 1269 EGRLGSVSvalDFKIINQSVTGLY 1292
+                                   444444445579***********9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (260 nodes)
+Target sequences:                           42  (28002 residues searched)
+Passed MSV filter:                         7  (0.166667); expected 0.8 (0.02)
+Passed bias filter:                        3  (0.0714286); expected 0.8 (0.02)
+Passed Vit filter:                         3  (0.0714286); expected 0.0 (0.001)
+Passed Fwd filter:                         3  (0.0714286); expected 0.0 (1e-05)
+Initial search space (Z):                 42  [actual number of targets]
+Domain search space  (domZ):               3  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.03
+# Mc/sec: 242.68
+//
+[ok]
