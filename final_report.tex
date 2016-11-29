@@ -434,9 +434,181 @@ Method as discussed in section~\ref{dpProtocol}. Visualization of data is availa
 
 \subsubsection{Proof of concept}
 
+The simulated sequences contain a motif with length 16 at various locations in the set of sequences and the sequences in the set contain either this motif or this motif and another motif shared by half some of the sequences (see \Cref{fig:design}). We trained motif with lengths 5, 10, 15, 16 (the correct length), 20, and 30. The results are shown in \Cref{fig:proof}. It shows that our strategy can successfully recognize and recover the position of the conserved region. And furthermore, as the motif length matches exactly the underlying truth, the number of outliers is minimized and if the length is close enough or slightly longer than the truth, the method is still robust. From the accuracy perspective, also, the accuracy is minimized if we use the right width but if the width is chosen within an appropriate range, then the true position is roughly within 10 amino acids to the predicted ones, which is still acceptable for our goal.
+
+Besides, simulated data, the similar analysis was done using globin data as well. We performed the analysis using width 10, 30, 50, ..., 130. \Cref{fig:recog} shows the results of pattern recognition using learned motif with width 10, 50, 110, where we learned 10 motifs with width 10 and 5 for others. Here the score in each cell is defined as the maximum score among all the scores obtained by any possible window such position evolving with any motifs learned. It turns out that our method can find the conserved region at test time even though the motif is short, which implies that our method has enough sensitivity for our task.
+\begin{figure}
+  \centering
+  \begin{minipage}{0.8\textwidth} % choose width suitably
+  \includegraphics[width=\textwidth]{images/chart}
+  {\footnotesize Simulated data has three motifs and every sequence at training time share the same motif (red) but may or may not contain other motifs (yellow/blue). At test time, the sequences share similar pattern and we chech if the trained motif can successfully recover the shared pattern (red).\par}
+  \end{minipage}
+  \caption{The overview of the analysis design for simulated data}
+  \label{fig:design}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Width_5} % first figure itself
+    % \caption{first figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Width_10} % second figure itself
+    % \caption{second figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Width_15} % second figure itself
+    % \caption{second figure}
+  \end{minipage}
+  \vfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/Width_16} % first figure itself
+    % \caption{first figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/Width_20} % second figure itself
+    % \caption{second figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/Width_30} % second figure itself
+    % \caption{second figure}
+  \end{minipage}
+  \caption{The results of conserved region finding in simulated sequences}
+  \label{fig:proof}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width10_heatmap} % first figure itself
+    % \caption*{first figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width50_heatmap} % second figure itself
+    % \caption*{second figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width110_heatmap} % second figure itself
+    % \caption*{second figure}
+  \end{minipage}
+  \caption{The pattern recognition scores of globins}
+  \label{fig:recog}
+\end{figure}
+
 \subsubsection{Motif finding in Cas5 and Cas7}
 
+The optimization curves of motif finding in Cas5 and Cas7 with width 10, 50, 110 are shown in \Cref{fig:cas5} and \Cref{fig:cas7}. From the curves we can see the Markov chain almost converges in each run.
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/cas5_width10_curve} % first figure itself
+    \caption*{Width = 10}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/cas5_width50_curve} % second figure itself
+    \caption*{Width = 50}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/cas5_width110_curve} % second figure itself
+    \caption*{Width = 110}
+  \end{minipage}
+  \caption{The optimization curves for motif finding in Cas5}
+  \label{fig:cas5}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/cas7_width10_curve} % first figure itself
+    \caption*{Width = 10}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/cas7_width50_curve} % second figure itself
+    \caption*{Width = 50}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/cas7_width110_curve} % second figure itself
+    \caption*{Width = 110}
+  \end{minipage}
+  \caption{The optimization curves for motif finding in Cas7}
+  \label{fig:cas7}
+\end{figure}
+
 \subsubsection{Pattern recognition in Cas9}
+
+The results of pattern recognitions are shown in \Cref{fig:cas5_recog} and \Cref{fig:cas7_recog}. It turns out that for motif with width 10, we some noises and for motif with width 50 and 110, we get no single at all.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width10_cas5_heatmap} % first figure itself
+    % \caption*{Width = 10}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width50_cas5_heatmap} % second figure itself
+    % \caption*{Width = 50}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width110_cas5_heatmap} % second figure itself
+    % \caption*{Width = 110}
+  \end{minipage}
+  \caption{The pattern recognition scores of Cas9 with motifs found in Cas5}
+  \label{fig:cas5_recog}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width10_cas7_heatmap} % first figure itself
+    % \caption*{Width = 10}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width50_cas7_heatmap} % second figure itself
+    % \caption*{Width = 50}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\textwidth}
+    \centering
+    \includegraphics[width=1\textwidth]{images/Width110_cas7_heatmap} % second figure itself
+    % \caption*{Width = 110}
+  \end{minipage}
+  \caption{The pattern recognition scores of Cas9 with motifs found in Cas7}
+  \label{fig:cas7_recog}
+\end{figure}
 
 
 \subsection{Domain-specific profile HMM}
