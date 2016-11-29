@@ -83,13 +83,15 @@ The abstract goes here.
 
 
 \section{Introduction}
-Project is about the evolution and relationship of various \textit{Cas} (CRISPR-associated) proteins. CRISPR system works by base-pair recognition of foreign genetic material and subsequent nuclease activity on the non-self genome. This has been adopted for the purpose of genetic engineering, and its cleavage based on base-pairing (as opposed to protein-DNA recognition of ZNF or TALENs) provide improved accuracy and reduced costs (no protein engineering involved). CRISPR is as diverse as the species that utilize them, but ultimately have the same function. While \textit{Cas9} (isolated from \textit{Streptococcus pyogenes}) currently the protein of choice for such applications due to smallest number of involved components, it would be beneficial to study the other Cas proteins as well since \textit{s.pyogenes Cas9} is limited in terms of PAM (Protospacer Adjacent Motif), of \texttt{-NGG} or to be used in conjunction with \textit{s.pyogenes Cas9}.
+This report explores the evolution and relationship of various \textit{Cas} (CRISPR-associated) proteins. CRISPR is a prokaryotic adaptive immune system that works by base-pair recognition of foreign genetic material and subsequent nuclease activity on the non-self genome. This has been adopted for various applications including genome engineering, and the fact that CRISPR's recognition mechanism based on base-pairing (as opposed to protein-DNA recognition of ZNF or TALENs) result in improved accuracy and reduced costs (no protein engineering involved). CRISPR is as diverse as the species that carry CRISPR in its genome, but ultimately have the same function of adaptive immunity against foreign agents. While \textit{Cas9} (isolated from \textit{Streptococcus pyogenes}) is currently the \text{Cas} protein of choice for such applications due to smallest number of involved components, it would be beneficial to study the other Cas proteins as well, since \textit{s.pyogenes Cas9} is limited in terms of PAM (Protospacer Adjacent Motif), of \texttt{-NGG}), large size of \textit{Cas9} provides limits in some applications, as well as expanding available options for CRISPR engineering. 
 
-Cas9 currently is predominantly used for genome engineering because it's only 1 protein that you have to worry about, and was the first CRISPR protein that was successfully adapted for genome engineering. Now that we know more about the CRISPR system and somewhat better understanding of what each domain does, it may be beneficial to explore using some of the other CRISPR proteins to achieve same goal. Cas9's big size (1400AA residues) has been source of concern for therapeutic applications. Also, using different Cas proteins potentially offer greater choice of PAM sequence. By identifying conserved motifs between different CRISPR proteins, we can hopefully identify regions of corresponding activity in those CRISPR proteins, and compare to \textit{Cas9} which has been studied in greater detail in terms of structure\cite{cas9structure} or function\cite{mali} compared to other \textit{Cas} proteins. 
+\textit{Cas9} currently is predominantly used for genome engineering because it was the first CRISPR protein that was successfully adapted for genome engineering, chosen for its relative simplicity (single gene for all required protein components). In other CRISPR system, the CRISPR functionality is split into multiple \textit{Cas} proteins rather than a single protein, such as in \textit{Cas9}. Now that we know more about the CRISPR system and somewhat better understanding of what each domain does, it may be beneficial to explore using some of the other CRISPR proteins to achieve same goal : use \textit{Cas} protein and its base-pair recognition capacity for various applications ranging from scientific research to genetic therapy. 
 
- In this paper, we employ 3 different approaches to identify motifs, or conserved regions of significance in terms of \textit{Cas} function for better understanding of the \textit{Cas} protein family and mechanism of each component. 
+\textit{Cas9}'s big size (1368AA residues) has been a source of concern for therapeutic applications.  Prominent delivery tool for \textit{in vivo} and \textit{in vitro} for gene therapy has been adeno-associated virus. While there have been attempts to utilize such delivery method for \textit{Cas9} such as \cite{aav1} or\cite{aav2}, its prohibitively large size has limited number of studies reporting successful gene therapy using both \textit{Cas9} and AAV. Other families of \textit{Cas} proteins are predicted to have different functions split up into multiple genes. As some function of CRISPR system is not necessarily for the purpose of genetic engineering (such as initial cleavage and insertion of foreign genetic material into CRISPR complex), it would be greatly beneficial to identify and isolate specific regions of interest, as well as individual \textit{Cas} proteins that represent those regions, that are directly applicable for genome studies. By identifying conserved motifs between different CRISPR proteins, we can hopefully identify regions of corresponding activity in those CRISPR proteins, and compare to \textit{Cas9} which has been studied in greater detail in terms of structure\cite{cas9structure} or function\cite{mali} compared to other \textit{Cas} proteins. Using other \textit{Cas} proteins would not only allow for greater choice for PAM motifs, but also possibly smaller \textit{Cas} proteins that can accomplish same goals, with less hindrance from the size of protein.
 
-\subsection{CRISPR/Cas} 
+In this report, we employ 3 different approaches to identify motifs, or conserved regions of significance in terms of \textit{Cas} function for better understanding of the \textit{Cas} protein family and mechanism of each component. 
+
+\subsection{CRISPR/Cas} \label{crisprintro}
 
 CRISPR(Clustered regularly interspaced short palindromic repeats) is a microbial adaptive immune system. While bacteria and archaea utilize CRISPR system to store foreign genetic material to distinguish self vs non-self, this system has been adopted and exploited by scientists since 2012 genome engineering tool, as discussed in \cite{jenniferdoudna} and \cite{fengzhang}. CRISPR initially began as next-generation tool to replace ZNFs and TALENs, it has since then been modified for non-genome engineering purposes such as CRISPRi \cite{stanleyqi}. There also have been attempts to reduce off-target effects by modifying the nuclease domain\cite{doublenick} . 
 
@@ -105,21 +107,22 @@ Naturally in bacteria or archaea, CRISPR proteins have distinct roles in the thr
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.4]{images/crisprOverview}
-      \caption{Overview of CRISPR proteins and their function ~\cite{annualreview}}
+      \caption{Overview of CRISPR proteins and their function as described in~\ref{crisprintro} ~\cite{annualreview}}
       \label{crisprOverview}
 \end{figure}
 
 \subsection{Past Approaches}
-Functionally related regions can be clustered by evidences in experimental data. As summarized in Figure. \ref{buildingBlocks}. Previous work has found conserved regions on the sequence level  using sequence alignment and structural information\cite{preWork} inside each sub-type of the \textit{Cas} system but not across the whole \textit{Cas} family.
+Functionally related regions can be clustered by evidences in experimental data. As summarized in Figure \ref{buildingBlocks}. Previous work has found conserved regions on the sequence level  using sequence alignment and structural information\cite{preWork} inside each sub-type of the \textit{Cas} system but not across the whole \textit{Cas} family.
+\TODO{cite\{prework\} does not exist. add reference ? }
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.35]{images/buildingBlocks}
-      \caption{Conserved building blocks of \textit{Cas} family proteins \cite{buildingBlocks}}
+      \caption{Conserved building blocks of \textit{Cas} family proteins}
       \label{buildingBlocks}
 \end{figure}
 
-\subsection{Goal of Paper}
+\subsection{Goal of Project}
 
 In this paper, we would like to answer the question that whether or not the proteins in Cas family share some sequence level similarity. And more specifically, as Cas9 is a multi-domain protein with multiple functions and each function can be achieved by other single-function protein in Cas family, we would like to explore if we can map such functional domain similarity on the basis of primary sequence similarity between Cas9 and other cas proteins. Informally, we tend to solve the following problem:
 \begin{itemize}
@@ -128,7 +131,7 @@ In this paper, we would like to answer the question that whether or not the prot
 \end{itemize}
 Here \textit{occurs} and \textit{representative} can be explained in different ways under different strategies. In the following section we will discuss the two strategies we proposed to solve this problem.
 
-\subsection{Approaches in This Paper}
+\subsection{Approaches in This Project}
 
 In this paper, we propose the following two strategies: i) alignment; ii) motif finding. First of all, our problem is naturally a multiple sequence alignment problem. Notice that other Cas proteins is like a substring of Cas9, then to recognize such local similarity, both semi-global alignment and local alignment is suitable in this case. And here \textit{occurs} and \textit{representative} mean that $r_i$ is optimal in alignment.  
 
@@ -150,25 +153,30 @@ Gene sequences for \textit{Cas} family including \textit{Cas1} through \textit{C
 
 \subsection{Sequence Alignment using Dynamic Programming} \label{dpProtocol}
 
-Semiglobal ailgnment using Needleman-Wunsch\cite{needlemanwunsch} and Local Alignment using Smith-Waterman Algorithm\cite{smithwaterman} were implemented for pairwise sequence comparison.
+Semiglobal alignment using Needleman-Wunsch\cite{needlemanwunsch} and local alignment using Smith-Waterman Algorithm\cite{smithwaterman} were implemented for pairwise sequence comparison. This is the most intuitive and straight-forward approach for identifying regions of similarity or conserved patterns. However, as simple as the method is, it does have some limitations as discussed in detail below. Because amino acid sequences were used for alignment, it does allow for discrimination between varying degree of conservation or divergence of residues or patterns. 
+
+
 Code available at \texttt{https://github.com/cookie223/CAS\_project/tree/master/dp}
 
 
 \subsubsection{Model \& Algorithm Overview}
 
-Semiglobal alignment and local alignment were performed on various \textit{Cas} sequences. Because certain families of \textit{Cas} proteins are composed of multiple genes, it is impossible to do a global alignment, or multiple sequence alignment with all \textit{Cas} sequences. Instead, \textit{s. pyogenes Cas9} was used as a reference sequence, to which all other \textit{Cas} sequence was aligned to in pairwise sequence alignment. 
+Semiglobal alignment and local alignment were performed on various \textit{Cas} sequences. Because certain families of \textit{Cas} proteins are composed of multiple genes, it is impossible to do a global alignment, or multiple sequence alignment with all \textit{Cas} sequences. Instead, \textit{s.pyogenes Cas9} was used as a reference sequence, to which all other \textit{Cas} sequence was aligned to in pairwise sequence alignment. 
 
+Semiglobal alignment aimed to identify which region of the \textit{Cas} protein as a whole fit to \textit{Cas9}, or the reference sequence (which part of \textit{Cas9} it is most similar to as a whole). As \textit{Cas9} has been studied extensively relative to other \textit{Cas} proteins, this approach aimed to possibly map the function of individual \textit{Cas} protein to a specific region of \textit{Cas9} protein with regions with identified functions. 
+
+Local alignment aimed to identify specific regions that may or may not be smaller than the \textit{Cas} protein itself, compared to \textit{Cas9}. This alignment should be fairly similar in case of highly conserved sequences. However, it may result in \textit{Cas} protein mapping to different regions in \textit{Cas9} depending on the size or the degree of divergence. 
 
 \subsubsection{Pros and Cons}
 
-Because alignment were done against \textit{s. pyogenes Cas9} rather than a progressive alignment, for \textit{Cas} sequences highly divergent from \textit{s. pyogenes Cas9} may be aligned to an inaccurate site. Each alignment is guaranteed to return the global maximum or the most optimal alignment with given parameters, which may or may not be the actual corresponding motif. Also, this method assumes site independence, and does not discriminate conserved regions (which motifs would likely be part of) as opposed to fast-evolving regions.
+Because alignment were done against \textit{s.pyogenes Cas9} rather than a progressive alignment, for \textit{Cas} sequences highly divergent from \textit{s.pyogenes Cas9} may be aligned to an inaccurate site. Each alignment is guaranteed to return the global maximum or the most optimal alignment with given parameters, which may or may not be the actual corresponding motif. Also, this method assumes site independence, and does not discriminate conserved regions (which motifs would likely be part of) as opposed to fast-evolving regions. 
 
 
 \subsubsection{Protocol} 
 Following parameters were used for sequence alignment :
 \begin{itemize}
 \item Scoring Matrix = BLOSUM62 (BLASTP default)
-\item Affine Gap Penalty = -10 (BLASTP default is 11)
+\item Affine Gap Penalty = -10 (BLASTP default is -11)
 \item Gap Extension Penalty = -1 (BLASTP default)
 \item End Gap Penalty (for Semi-Global only) = -3
 \end{itemize}
@@ -178,7 +186,7 @@ Gap opening / affine gap penalty was slightly lowered to relax requirement for o
 
 \subsubsection{Analysis}
 
-After each \textit{Cas} sequence was aligned to \textit{s. pyogenes Cas9}, it was then analyzed for the following values :
+After each \textit{Cas} sequence was aligned to \textit{s.pyogenes Cas9}, it was then analyzed for the following values :
 \begin{itemize}
 \item Start position (row, col) of traceback
 \item End position (row, col) of traceback
@@ -699,6 +707,13 @@ Hiroshi Nishimasu, F. Ann Ran, Patrick D. Hsu, Silvana Konermann, Soraya I. Sheh
 
 \bibitem{doublenick}
 Ran FA, Hsu PD, Lin C-Y, et al. \emph{Double nicking by RNA-guided CRISPR Cas9 for enhanced genome editing specificity.} Cell. 2013;154(6):1380-1389. doi:10.1016/j.cell.2013.08.021.
+
+\bibitem{aav1}
+Ran FA,  et al., \emph{In vivo genome editing using Staphylococcus aureus Cas9} Nature 520, 186?191 (09 April 2015) doi:10.1038/nature14299
+
+\bibitem{aav2}
+I. Maggio et al., \emph{Adenoviral vector delivery of RNA-guided CRISPR/Cas9 nuclease complexes induces targeted mutagenesis in a diverse array of human cells} Scientific Reports 4, Article number: 5105 (2014) doi:10.1038/srep05105
+
 
 \bibitem{hmmer}
 HMMER 3.1b2 (February 2015); http://hmmer.org/
