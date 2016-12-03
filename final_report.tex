@@ -152,10 +152,8 @@ Gene sequences for \textit{Cas} family including \textit{Cas1} through \textit{C
 
 \subsection{Sequence Alignment using Dynamic Programming} \label{dpProtocol}
 
-Semiglobal alignment using Needleman-Wunsch\cite{needlemanwunsch} and local alignment using Smith-Waterman Algorithm\cite{smithwaterman} were implemented for pairwise sequence comparison. This is the most intuitive and straight-forward approach for identifying regions of similarity or conserved patterns. However, as simple as the method is, it does have some limitations as discussed in detail below. Because amino acid sequences were used for alignment, it does allow for discrimination between varying degree of conservation or divergence of residues or patterns. 
+Semiglobal alignment using Needleman-Wunsch\cite{needlemanwunsch} and local alignment using Smith-Waterman Algorithm\cite{smithwaterman} were implemented for pairwise sequence comparison. This is the most intuitive and straight-forward approach for identifying regions of similarity or conserved patterns. However, as simple as the method is, it does have some limitations as discussed in detail below. Because amino acid sequences were used for alignment, it does allow for discrimination between varying degree of conservation or divergence of residues or patterns. While \textit{Cas1, Cas2} and \textit{Cas4} are not part of interference domain and typically not considered in studies for applications of CRISPR/\text{Cas}, I included these proteins in pairwise sequence alignment against \textit{s.pyogenes Cas9} to explore whether there is any sequence similarity within the CRISPR proteins that are currently predicted to be separate genes, and possibly repeated functionality. 
 
-
-Code available at \texttt{https://github.com/cookie223/CAS\_project/tree/master/dp}
 
 
 \subsubsection{Model \& Algorithm Overview}
