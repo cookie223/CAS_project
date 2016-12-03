@@ -113,7 +113,6 @@ Naturally in bacteria or archaea, CRISPR proteins have distinct roles in the thr
 
 \subsection{Past Approaches}
 Functionally related regions can be clustered by evidences in experimental data. As summarized in Figure \ref{buildingBlocks}. Previous work has found conserved regions on the sequence level  using sequence alignment and structural information\cite{preWork} inside each sub-type of the \textit{Cas} system but not across the whole \textit{Cas} family.
-\TODO{cite\{prework\} does not exist. add reference ? }
 
 \begin{figure}[ht]
   \centering
@@ -451,7 +450,7 @@ Besides, simulated data, the similar analysis was done using globin data as well
   \includegraphics[width=\textwidth]{images/chart}
   {\footnotesize Simulated data has three motifs and every sequence at training time share the same motif (red) but may or may not contain other motifs (yellow/blue). At test time, the sequences share similar pattern and we chech if the trained motif can successfully recover the shared pattern (red).\par}
   \end{minipage}
-  \caption{The overview of the analysis design for simulated data}
+  \caption{Gibbs sampling approach - The overview of the analysis design for simulated data}
   \label{fig:design}
 \end{figure}
 
@@ -492,7 +491,7 @@ Besides, simulated data, the similar analysis was done using globin data as well
     \includegraphics[width=\textwidth]{images/Width_30} % second figure itself
     % \caption{second figure}
   \end{minipage}
-  \caption{The results of conserved region finding in simulated sequences}
+  \caption{Gibbs sampling approach - The results of conserved region finding in simulated sequences}
   \label{fig:proof}
 \end{figure}
 
@@ -515,7 +514,7 @@ Besides, simulated data, the similar analysis was done using globin data as well
     \includegraphics[width=1\textwidth]{images/Width110_heatmap} % second figure itself
     % \caption*{second figure}
   \end{minipage}
-  \caption{The pattern recognition scores of globins}
+  \caption{Gibbs sampling approach - The pattern recognition scores of globins}
   \label{fig:recog}
 \end{figure}
 
@@ -541,7 +540,7 @@ The optimization curves of motif finding in Cas5 and Cas7 with width 10, 50, 110
     \includegraphics[width=1\textwidth]{images/cas5_width110_curve} % second figure itself
     \caption*{Width = 110}
   \end{minipage}
-  \caption{The optimization curves for motif finding in Cas5}
+  \caption{Gibbs sampling approach - The optimization curves for motif finding in Cas5}
   \label{fig:cas5}
 \end{figure}
 
@@ -564,7 +563,7 @@ The optimization curves of motif finding in Cas5 and Cas7 with width 10, 50, 110
     \includegraphics[width=1\textwidth]{images/cas7_width110_curve} % second figure itself
     \caption*{Width = 110}
   \end{minipage}
-  \caption{The optimization curves for motif finding in Cas7}
+  \caption{Gibbs sampling approach - The optimization curves for motif finding in Cas7}
   \label{fig:cas7}
 \end{figure}
 
@@ -591,7 +590,7 @@ The results of pattern recognitions are shown in \Cref{fig:cas5_recog} and \Cref
     \includegraphics[width=1\textwidth]{images/Width110_cas5_heatmap} % second figure itself
     % \caption*{Width = 110}
   \end{minipage}
-  \caption{The pattern recognition scores of Cas9 with motifs found in Cas5}
+  \caption{Gibbs sampling approach - The pattern recognition scores of Cas9 with motifs found in Cas5}
   \label{fig:cas5_recog}
 \end{figure}
 
@@ -614,7 +613,7 @@ The results of pattern recognitions are shown in \Cref{fig:cas5_recog} and \Cref
     \includegraphics[width=1\textwidth]{images/Width110_cas7_heatmap} % second figure itself
     % \caption*{Width = 110}
   \end{minipage}
-  \caption{The pattern recognition scores of Cas9 with motifs found in Cas7}
+  \caption{Gibbs sampling approach - The pattern recognition scores of Cas9 with motifs found in Cas7}
   \label{fig:cas7_recog}
 \end{figure}
 
@@ -635,7 +634,7 @@ For method quality control purpose, some protocol was applied to globins4.fasta 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.3]{images/hmm_test2}
-      \caption{profile HMM domain alignment in globins.search}
+      \caption{profile HMM approach -  Domain alignment in globins.search}
       \label{hmm_test2}
 \end{figure} 
 
@@ -647,7 +646,7 @@ After subtracting and aligning all the shared domains of \textit{Cas9} marked in
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.3]{images/cas9Domain}
-      \caption{One example result for searching for \textit{Cas9} in all \textit{Cas} family proteins}
+      \caption{profile HMM approach - One example result for searching for \textit{Cas9} in all \textit{Cas} family proteins}
       \label{Cas9}
 \end{figure} 
 
@@ -658,7 +657,7 @@ We also tried the other direction. That is to use domain markers of \textit{Cas5
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.3]{images/cas5Domain}
-      \caption{One example result for searching for \textit{Cas5} in all \textit{Cas} family proteins}
+      \caption{profile HMM approach - One example result for searching for \textit{Cas5} in all \textit{Cas} family proteins}
       \label{Cas5}
 \end{figure} 
 
@@ -685,6 +684,9 @@ Saul B. Needleman, Christian D. Wunsch, \emph{A general method applicable to the
 
 \bibitem{smithwaterman}
 Smith, Temple F., Waterman, Michael S., \emph{Identification of Common Molecular Subsequences} \hskip 1em plus 0.5em minus 0.4em\relax Journal of Molecular Biology. 147: 195-197. doi:10.1016/0022-2836(81)90087-5. PMID 7265238., 1981
+
+\bibitem{preWork}
+Makarova, Kira S et al. ?Unification of Cas Protein Families and a Simple Scenario for the Origin and Evolution of CRISPR-Cas Systems.? Biology Direct 6 (2011): 38. PMC. Web. 26 Nov. 2016.
 
 \bibitem{annualreview}
 Devaki Bhaya,Michelle Davison, and Rodolphe Barrangou, \emph{CRISPR-Cas Systems in Bacteria and Archaea: Versatile Small RNAs for Adaptive Defense and Regulation} \hskip 1em plus 0.5em minus 0.4em\relax Annual Review of Genetics Vol. 45: 273-297 (Volume publication date December 2011) DOI: 10.1146/annurev-genet-110410-132430
