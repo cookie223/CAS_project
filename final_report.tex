@@ -256,7 +256,7 @@ Following steps were applied to the analysis:
 The widths used started from 10 to up to 190 and the size of interval was 10. To retrieve not only the most representative motif but other sub-optimal ones, for every width we repeated the Gibbs sampling procedure five times and recorded the best output for every run. For every Markov chain, we ran 600 steps because it was sufficient to reach a suboptimal with 600 steps for all instances in analysis.
 
 \subsubsection{Analysis}
-To show our Gibbs sampler converge, we track the objective value along the Markov chain. And to show our motif finding based strategy works, we performed the proposed procedure on simulated sequences and globin sequences given in Hmmer\cite{hmmer} where two sets of sequences share similar primary sequence patterns and checked whether our approach could recover such similarity.
+To show our Gibbs sampler converge, we track the objective value along the Markov chain. And to show our motif finding based strategy works, we performed the proposed procedure on simulated sequences and Globin sequences given in Hmmer\cite{hmmer} where two sets of sequences share similar primary sequence patterns and checked whether our approach could recover such similarity.
 
 \subsection{Domain-specific profile HMM}
 
@@ -299,7 +299,7 @@ models we can build to figure out whether a sequence contains the domain. The mo
 
 
 \subsubsection{Analysis}
-For method testing, a set of globin sequences given in Hmmer\cite{hmmer} is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
+For method testing, a set of Globin sequences given in Hmmer\cite{hmmer} is used. Since there are \textit{Cas9} and \textit{Cas5} in the previously downloaded \textit{Cas} family proteins sequences, they also act as positive control since the method should be able to find the domains in these proteins.\\
 For output analysis, HMM is able to give the probability of given sequence emitted from the underlying domain profile HMM.
 
 
@@ -441,7 +441,7 @@ Method as discussed in section~\ref{dpProtocol}. Visualization of data is availa
 
 The simulated sequences contain a motif with length 16 at various locations in the set of sequences and the sequences in the set contain either this motif or this motif and another motif shared by half some of the sequences (see \Cref{fig:design}). We trained motif with lengths 5, 10, 15, 16 (the correct length), 20, and 30. The results are shown in \Cref{fig:proof}. It shows that our strategy can successfully recognize and recover the position of the conserved region. And furthermore, as the motif length matches exactly the underlying truth, the number of outliers is minimized and if the length is close enough or slightly longer than the truth, the method is still robust. From the accuracy perspective, also, the accuracy is minimized if we use the right width but if the width is chosen within an appropriate range, then the true position is roughly within 10 amino acids to the predicted ones, which is still acceptable for our goal.
 
-Besides, simulated data, the similar analysis was done using globin data as well. We performed the analysis using width 10, 30, 50, ..., 130. \Cref{fig:recog} shows the results of pattern recognition using learned motif with width 10, 50, 110, where we learned 10 motifs with width 10 and 5 for others. Here the score in each cell is defined as the maximum score among all the scores obtained by any possible window such position evolving with any motifs learned. It turns out that our method can find the conserved region at test time even though the motif is short, which implies that our method has enough sensitivity for our task.
+Besides, simulated data, the similar analysis was done using Globin data as well. We performed the analysis using width 10, 30, 50, ..., 130. \Cref{fig:recog} shows the results of pattern recognition using learned motif with width 10, 50, 110, where we learned 10 motifs with width 10 and 5 for others. Here the score in each cell is defined as the maximum score among all the scores obtained by any possible window such position evolving with any motifs learned. It turns out that our method can find the conserved region at test time even though the motif is short, which implies that our method has enough sensitivity for our task.
 \begin{figure}
   \centering
   \begin{minipage}{0.8\textwidth} % choose width suitably
@@ -512,7 +512,7 @@ Besides, simulated data, the similar analysis was done using globin data as well
     \includegraphics[width=1\textwidth]{images/Width110_heatmap} % second figure itself
     % \caption*{second figure}
   \end{minipage}
-  \caption{Gibbs sampling approach - The pattern recognition scores of globins}
+  \caption{Gibbs sampling approach - The pattern recognition scores of Globins}
   \label{fig:recog}
 \end{figure}
 
@@ -620,19 +620,19 @@ The results of pattern recognitions are shown in \Cref{fig:cas5_recog} and \Cref
 
 \subsubsection{Protocol testing}
 
-For method quality control purpose, some protocol was applied to globins4.fasta (a file of 4 sequences of globins generated from a tutorial file of HMMer). We built the profile Hmm and save it in golbins4.hmm. Using this profile HMM, we searched globins45.fa (a tutorial file of HMMer) and the result is saved into golbins.search. The summary of found domains is in the header part of the file as shown in Figure. \ref{hmm_test1}.  An example alignment of the found domain is shown in Figure. \ref{hmm_test2}. We can see that a domain is found in HBB\_MANSP. The profile HMM model can also be read from the alignment. Full result is available in golbins.search file.
+For method quality control purpose, some protocol was applied to Globins4.fasta (a file of 4 sequences of Globins generated from a tutorial file of HMMer). We built the profile Hmm and save it in golbins4.hmm. Using this profile HMM, we searched Globins45.fa (a tutorial file of HMMer) and the result is saved into golbins.search. The summary of found domains is in the header part of the file as shown in Figure. \ref{hmm_test1}.  An example alignment of the found domain is shown in Figure. \ref{hmm_test2}. We can see that a domain is found in HBB\_MANSP. The profile HMM model can also be read from the alignment. Full result is available in golbins.search file.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.35]{images/hmm_test1}
-      \caption{profile HMM search results summary in globins.search}
+      \caption{profile HMM search results summary in Globins.search}
       \label{hmm_test1}
 \end{figure} 
 
 \begin{figure}[ht]
   \centering
   \includegraphics[scale = 0.3]{images/hmm_test2}
-      \caption{profile HMM approach -  Domain alignment in globins.search}
+      \caption{profile HMM approach -  Domain alignment in Globins.search}
       \label{hmm_test2}
 \end{figure} 
 
@@ -669,18 +669,18 @@ However, in some cases, local and global alignment disagreed as for where to map
 
 
 
-The Gibbs sampling model was verified to successfully identify conserved regions in simulated sequences and globin data, which indicates that the motif finding approach with PSSMs is capable of finding underlying conserved regions in sequences. However, the same motif finding approach fails in the analysis of \textit{Cas} protein family. The main reason is that the conserved region shared by \textit{Cas} family might be evolutionarily far to divergent compared to the globin family and the signal is hard to be captured by the default PSSM without utilizing any molecular evolution information. Also, the size of our training data is small and it may prevent discovery of motifs in sequences that are divergent too divergent. This pitfall leads to the possibility that the discovered motifs might not be representative of the entire \textit{CRISPR} protein family, and might be too stringent and overfitted to particular input data. 
+The Gibbs sampling model was verified to successfully identify conserved regions in simulated sequences and Globin data, which indicates that the motif finding approach with PSSMs is capable of finding underlying conserved regions in sequences. However, the same motif finding approach fails in the analysis of \textit{Cas} protein family. The main reason is that the conserved region shared by \textit{Cas} family might be evolutionarily far to divergent compared to the Globin family and the signal is hard to be captured by the default PSSM without utilizing any molecular evolution information. Also, the size of our training data is small and it may prevent discovery of motifs in sequences that are divergent too divergent. This pitfall leads to the possibility that the discovered motifs might not be representative of the entire \textit{CRISPR} protein family, and might be too stringent and overfitted to particular input data. 
 
 
 
 
-Profile-HMM was also verified to successfully identify conserved domains in the globin-family. In addition, it successfully identified the domains in the same subtype as the model source. For example, the model built from \textit{Cas9} can find most domains in \textit{Cas9} in other species. But it failed to find similar domains across different subtypes in the \textit{Cas} family. One possible reason for the failure is that the limited number of training sequences makes the model too rigid to be able to fit remotely related sequences. Another possible reason is that even though different proteins in different subtypes have similar functionalities, they evolved separately and have low level sequence similarity. 
+Profile-HMM was also verified to successfully identify conserved domains in the Globin-family. In addition, it successfully identified the domains in the same subtype as the model source. For example, the model built from \textit{Cas9} can find most domains in \textit{Cas9} in other species. But it failed to find similar domains across different subtypes in the \textit{Cas} family. One possible reason for the failure is that the limited number of training sequences makes the model too rigid to be able to fit remotely related sequences. Another possible reason is that even though different proteins in different subtypes have similar functionalities, they evolved separately and have low level sequence similarity. 
 
 
 Pairwise sequence alignment model implicitly incorporates biophysical properties while making alignment and motif predictions, but assumed sequence independence. Gibbs Sampling or HMM profiling do not take biophysical properties into consideration, but both consider multiple sequence for each position. Gibbs sampling is easy to implement and much more intuitive to understand and require relatively less data compared to HMM, but also assumed positional independence in evolution. HMM profiling addresses many of the features lacking in pairwise sequence alignment or Gibbs sampling, but generally requires much more data. However, there is finite number of \textit{Cas} sequences and even less in terms of actually available sequences. 
 
 
-In case of Gibbs and HMM models, both were shown to accurately predict conserved regions with the control data : Globin family and simulated sequences. However, Globin proteins belong to eukaryotes whose evolutionary history is much shorter than that of the prokaryotes - bacteria and archaea - which possess the CRISPR system. It may be that these models as-is are too stringent for identifying evolutionary relationships and motifs in much more distant protein family than a highly conserved protein like globin, in a relatively short evolutionary timestep. Performance of all current methods for identifying similarities or motif finding decrease as evolutionary diversity and divergence of the protein family being studied increases. Much more work can and should be done in development of models specifically for studying and identifying the relationship and conservation of motifs among distantly related organisms. 
+In case of Gibbs and HMM models, both were shown to accurately predict conserved regions with the control data : Globin family and simulated sequences. However, Globin proteins belong to eukaryotes whose evolutionary history is much shorter than that of the prokaryotes - bacteria and archaea - which possess the CRISPR system. It may be that these models as-is are too stringent for identifying evolutionary relationships and motifs in much more distant protein family than a highly conserved protein like Globin, in a relatively short evolutionary timestep. Given that highly complex multicellular eukaryotes have evolved $~$0.5 billion years ago, whereas some of the prokaryotic CRISPR systems represent billions of years of evolutionary time distance, coupled with much faster rate of reproduction, it is not surprising that CRISPR system would be much more divergent than the Globin family of eukaryotes \cite{prokHistory}. Performance of all current methods for identifying similarities or motif finding decrease as evolutionary diversity and divergence of the protein family being studied increases. Much more work can and should be done in development of models specifically for studying and identifying the relationship and conservation of motifs among distantly related organisms. 
 
 
 Our study has many potential directions it could take for improvement and expansions. One approach may be to increase our dataset to include even greater number of \textit{Cas} protein sequences. Also, all three models would greatly benefit from a more updated prediction of evolutionary timeline and relationship between the \textit{Cas} proteins for additional parameter tuning for more accurate motif discovery. Recall that the motif finding approach fails in the task with the potential lack of power in motif representation and the lack of data. One of the ways to overcome this pitfall is to reduce the size our alphabet. For example, instead of using the whole alphabet (20 amino acids), we can use 5-character alphabet where 5 characters indicate the biochemical properties of the residues. This can partly solve the problem of limited data by reducing the complexity of our model, and furthermore, it also automatically makes use of biochemical property and evolutionary 
@@ -741,6 +741,10 @@ C.~E. Lawrence, S.~F. Altschul, M.~S. Boguski, J.~S. Liu, A.~F. Neuwald, J.~C.
   Wootton, {\em et~al.}, ``Detecting subtle sequence signals: a gibbs sampling
   strategy for multiple alignment,'' {\em SCIENCE-NEW YORK THEN WASHINGTON-},
   vol.~262, pp.~208--208, 1993.
+  
+\bibitem{prokHistory}
+Fabia U Battistuzzi, Andreia Feijao and S Blair Hedges, \emph{A genomic timescale of prokaryote evolution: insights into the origin of methanogenesis, phototrophy, and the colonization of land} BMC Evolutionary Biology20044:44
+DOI: 10.1186/1471-2148-4-44
 
 \end{thebibliography}
 
